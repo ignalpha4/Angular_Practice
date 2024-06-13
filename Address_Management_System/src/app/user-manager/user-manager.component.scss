@@ -1,0 +1,13 @@
+.bordered {
+    border: 1px solid #ced4da; // Use Bootstrap's border color
+    border-radius: 0.25rem; // Optional: Add border radius for rounded corners
+    padding: 1rem; // Optional: Add padding for spacing
+    background-color: aliceblue;
+  }
+
+  .submit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

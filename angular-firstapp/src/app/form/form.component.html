@@ -1,0 +1,153 @@
+<div class="container mt-5 bordered">
+
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <h2> Personal Info</h2>
+        <div class="row mt-3">
+            <div class="col-lg-3">
+                <label for="first-name">First Name:</label>
+                <input id="first-name" class="form-control" type="text" formControlName="firstName">
+
+                <!-- validation check  -->
+                <div *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched">
+                    <div *ngIf="form.get('firstName')?.errors?.['required']">
+                        <p style="color:red;">First Name is required </p>  
+                    </div>
+                </div>
+                <div *ngIf="form.get('firstName')?.errors?.['maxlength']">
+                    <p style="color:red;">Maxlength exceeded </p> 
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <label for="last-name">Last Name:</label>
+                <input id="last-name" class="form-control" type="text" formControlName="lastName">
+
+                <!-- validation check  -->
+
+                <div *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched">
+                    <div *ngIf="form.get('lastName')?.errors?.['required']">
+                      <p style="color:red;">Last Name is required </p>  
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3">
+                <label for="dob">Date Of Birth</label>
+                <input id="dob" class="form-control" type="date" formControlName="dob">
+
+                <div *ngIf="form.get('dob')?.invalid && form.get('dob')?.touched">
+                    <div *ngIf="form.get('dob')?.errors?.['required']">
+                        
+                        <p style="color:red;">Date of Birth is required.</p> 
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" type="email" formControlName="email">
+
+               
+                <div *ngIf="form.get('email')?.errors?.['email']">
+                       
+                       <p style="color:red;">Please Enter Correct Email Address</p> 
+                </div>
+            
+
+            </div>
+
+        </div>
+
+        <div class="row mt-5">
+
+            <div class="col-lg-3">
+                <label class="form-label">Gender:</label>
+                <div class="mx-3">
+                    <label class="form-check-label me-2">
+                        <input type="radio" formControlName="gender" value="male" class="form-check-input"> Male
+                    </label>
+                    
+                    <label class="form-check-label mx-5">
+                        <input type="radio" formControlName="gender" value="female" class="form-check-input"> Female
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-3">
+
+                <label for="interest" class="form-label">Interests:</label>
+                <select id="interest" formControlName="interest" class="form-control">
+                    <option value="">Select Interest</option>
+                    <option value="cpp">C++</option>
+                    <option value="java">Java</option>
+                    <option value="js">JavaScript</option>
+                </select>
+
+            </div>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <hr>
+
+        <h2>Address</h2>
+
+        <div formArrayName="addresses">
+
+            <div class="row mt-3" *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i">
+
+                <div class="col-lg-3">
+                    <label for="street-{{i}}">Street:</label>
+                    <input id="street-{{i}}" type="text" formControlName="street" class="form-control">
+                </div>
+                <div class="col-lg-3">
+                    <label for="city-{{i}}">City:</label>
+                    <input id="city-{{i}}" type="text" formControlName="city" class="form-control">
+                </div>
+                <div class="col-lg-2">
+                    <label for="state-{{i}}">State:</label>
+                    <input id="state-{{i}}" type="text" formControlName="state" class="form-control">
+                </div>
+                <div class="col-lg-2">
+                    <label for="pincode-{{i}}">Pincode:</label>
+                    <input id="pincode-{{i}}" type="text" formControlName="pincode" class="form-control">
+                </div>
+
+                <div class="col-lg-2">
+                    <br>
+                    <button class="btn btn-primary mt-2" type="button" (click)="deleteAddress(i)">Delete Address</button>
+                </div>
+
+            </div>
+           
+        </div>
+
+        <!-- button to add the address fields -->
+        <br>
+        <button class="btn btn-primary" type="button" (click)="addAddress()">Add Address</button>
+
+    
+
+        <hr>
+        <!-- <div formGroupName="address">
+        <button type="button" (click)="updateProfile()">Update Profile</button>
+
+        </div> -->
+
+        <div class="submit">
+
+            <p>Complete the form to enable submit button.</p>
+            <p>Form Status: {{ form.status }}</p>
+
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+            <!-- <button type="submit">Submit</button> -->
+        </div>
+
+
+    </form>
+
+</div>
