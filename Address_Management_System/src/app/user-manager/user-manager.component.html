@@ -6,22 +6,39 @@
         <label for="userId">User ID:</label>
         <input id="userId" class="form-control" type="number" formControlName="userId">
 
+        <div *ngIf="form.get('userId')?.invalid && form.get('userId')?.touched">
+          <div *ngIf="form.get('userId')?.errors?.['required']" >
+                <p style="color: red;"> User Id is required</p>
+          </div>
+        </div>
 
       </div>
+
       <div class="col-lg-4">
         <label for="username">Username:</label>
         <input id="username" class="form-control" type="text" formControlName="userName">
+
+        <div *ngIf="form.get('userName')?.invalid && form.get('userName')?.touched">
+                <p style="color: red;"> User Id is required</p>
+        </div>
+
       </div>
       <div class="col-lg-4">
         <label for="email">Email:</label>
         <input id="email" class="form-control" type="text" formControlName="email">
+
+
+        <div *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched">
+          <p style="color: red;"> Enter Proper Email Address</p>
+        </div>
+
       </div>
     </div>
     <hr style="border-top: 1px solid white;">
     <!-- user asdress -->
     <h2>Address :</h2>
     <div formArrayName="addresses">
-      <div class="row mt-3" *ngFor="let address of addresses.controls; let i=index" [formGroupName]="i">
+      <div class="row mt-3" *ngFor="let address of addresses.controls; let i=index"     [formGroupName]="i" >
         <div class="col-lg-3">
           <label for="street-{{i}}">Street:</label>
           <input id="street-{{i}}" type="text" formControlName="street" class="form-control">
@@ -38,17 +55,23 @@
           <label for="zip-{{i}}">Zipcode:</label>
           <input id="zip-{{i}}" type="number" formControlName="zip" class="form-control">
         </div>
+
         <!-- delete btn -->
         <div class="col-lg-2" *ngIf="i >= 1">
           <br>
           <button class="btn btn-danger mt-2" type="button" (click)="deleteAddress(i)">Delete Address</button>
         </div>
+
+        
       </div>
     </div>
+
+
     <!--add address btn -->
     <br>
     <button class="btn btn-success" type="button" (click)="addAddress()">Add Address</button>
     <hr style="border-top: 2px solid white;">
+
     <!-- submit btn -->
     <div class="submit">
       <!-- <p>Complete the form to enable submit button.</p> -->
@@ -57,6 +80,8 @@
 
       <!-- <p>Form Status: {{ form.status }}</p> -->
       <button class="btn btn-primary" type="submit" [disabled]="!form.valid">{{ user !== null ? 'update' : 'submit' }}</button>
+
+      <!-- <button class="btn btn-primary" type="submit">{{ user !== null ? 'update' : 'submit' }}</button> -->
     </div>
   </form>
 </div>

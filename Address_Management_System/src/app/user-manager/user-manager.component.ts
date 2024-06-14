@@ -34,7 +34,7 @@ export class UserManagerComponent implements OnInit, OnChanges {
     this.form = this.fb.group({
       userId: ['', Validators.required],
       userName: ['', Validators.required],
-      email: ['', Validators.email],
+      email: ['',Validators.email],
       addresses: this.fb.array([this.createAddress()])
     });
   }
@@ -70,7 +70,9 @@ export class UserManagerComponent implements OnInit, OnChanges {
     this.addresses.removeAt(index);
   }
 
-  onSubmit() {
+  onSubmit() {  
+
+    console.log(this.form)
 
     if(this.user){
       this.operationMsg.emit("User Info updated");
