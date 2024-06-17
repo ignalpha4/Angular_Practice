@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MyServiceService } from '../my-service.service';
 
 @Component({
   selector: 'app-category-form',
@@ -13,7 +14,7 @@ export class CategoryFormComponent {
     @Output() CatData =  new EventEmitter();
     @Input() editCat:any;
 
-    constructor(private fb :FormBuilder){
+    constructor(private fb :FormBuilder,private myService:MyServiceService){
       this.initForm();
     }
 
@@ -33,12 +34,12 @@ export class CategoryFormComponent {
     }
 
     submit(){
-
       const formData = this.Cat_Form.value;
       this.CatData.emit(formData);
+      this.myService.addData(formData);
 
+      const temp = this.myService.getData();
+      console.log("getting data",temp);
       this.Cat_Form.reset();
     }
-
-
 }

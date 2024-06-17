@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MyServiceService } from '../my-service.service';
 
 @Component({
   selector: 'app-supplier-list',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./supplier-list.component.css']
 })
 export class SupplierListComponent {
+
+
 
   suppliers = [
     {
@@ -15,6 +18,9 @@ export class SupplierListComponent {
       S_Address:"XYZ Street XYZ Place"
     }
   ]
+
+
+
 
   colDefs : any[] = [
     {headerName:"Supplier ID: ",field:"S_Id"},

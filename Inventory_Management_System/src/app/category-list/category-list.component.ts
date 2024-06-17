@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MyServiceService } from '../my-service.service';
 
 @Component({
   selector: 'app-category-list',
@@ -13,6 +14,11 @@ export class CategoryListComponent {
       C_Name:"Fruits"
     }
   ] 
+
+  constructor(private myService:MyServiceService){
+  }
+
+
 
   colDefs:any[] =[
     {headerName:'Category ID',field:"C_Id",minWidth:500},
