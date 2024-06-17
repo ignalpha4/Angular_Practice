@@ -1,0 +1,48 @@
+
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="submit()" >
+        <h2>Product Details</h2>
+        <div class="row mt-4">
+            <div class="col-lg-4">
+                <label for="P_Id">Product ID:</label>
+                <input type="number" id="P_Id" formControlName="P_Id" class="form-control">
+            </div>
+            <div class="col-lg-4">
+                <label for="P_Name">Product Name</label>
+                <input type="text" id="P_Name" formControlName="P_Name" class="form-control">
+            </div>
+            <div class="col-lg-4">
+                <label for="P_Category">Product Category</label>
+                <select id="P_Category" formControlName="P_Category" class="form-control">
+                    <option value="Electronics">Electronics</option>
+                    <option value="Stationary">Stationary</option>
+                    <option value="Grocery">Grocery</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <label for="P_Quantity">Product Quantity</label>
+                <input type="number" class="form-control" formControlName="P_Quantity">
+
+            </div>
+            <div class="col-lg-4">
+                <label for="P_Price">Product Price</label>
+                <input type="number" class="form-control" formControlName="P_Price">
+            </div>
+            <div class="col-lg-4">
+                <label for="P_Supplier">Product Supplier</label>
+                <select id="P_Supplier" formControlName="P_Supplier" class="form-control">
+                    <option value="ABC Supplier">ABC Supplier</option>
+                    <option value="XYZ Supplier">XYZ Supplier</option>
+                    <option value="LMN Supplier">LMN Supplier</option>
+                </select>
+            </div>
+        </div>
+        <hr>
+        <button type="button" class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+</div>

@@ -1,0 +1,14 @@
+.bordered {
+    border: 1px solid #ced4da; 
+    border-radius: 15px; 
+    padding: 1rem; 
+    background-color: #233042;
+    color: white;
+  }
+
+  .submit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

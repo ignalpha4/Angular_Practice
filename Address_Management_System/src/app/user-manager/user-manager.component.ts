@@ -4,7 +4,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-user-manager',
   templateUrl: './user-manager.component.html',
-  styleUrls: ['./user-manager.component.scss']
+  styleUrls: ['./user-manager.component.css']
 })
 
 export class UserManagerComponent implements OnInit, OnChanges {
@@ -38,6 +38,7 @@ export class UserManagerComponent implements OnInit, OnChanges {
       addresses: this.fb.array([this.createAddress()])
     });
   }
+
   createAddress(): FormGroup {
     return this.fb.group({
       street: ['',Validators.required],
@@ -71,7 +72,6 @@ export class UserManagerComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {  
-
     console.log(this.form)
 
     if(this.user){

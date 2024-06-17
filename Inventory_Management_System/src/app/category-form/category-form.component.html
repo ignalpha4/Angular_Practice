@@ -1,0 +1,23 @@
+
+<div class="container">
+  <h3>Category Info:</h3>
+
+  <form [formGroup]="Cat_Form" class="form-control" (ngSubmit)="submit()">
+
+    <div class="row">
+      <div class="col-lg-6">
+        <label for="C_Id">Category ID</label>
+        <input type="number" class="form-control" id="C_Id" formControlName="C_Id"/>
+      </div>
+
+      <div class="col-lg-6">
+        <label for="C_Name">Category Name</label>
+        <input type="text" class="form-control" id="C_Name" formControlName="C_Name" />
+      </div>
+    </div>
+
+    <hr>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

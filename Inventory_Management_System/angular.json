@@ -3,13 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Address_Management_System": {
+    "Inventory_Management_System": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "css"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,14 +13,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/address-management-system",
+            "outputPath": "dist/inventory-management-system",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "css",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -66,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Address_Management_System:build:production"
+              "browserTarget": "Inventory_Management_System:build:production"
             },
             "development": {
-              "browserTarget": "Address_Management_System:build:development"
+              "browserTarget": "Inventory_Management_System:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Address_Management_System:build"
+            "browserTarget": "Inventory_Management_System:build"
           }
         },
         "test": {
@@ -88,7 +83,6 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "css",
             "assets": [
               "src/favicon.ico",
               "src/assets"
