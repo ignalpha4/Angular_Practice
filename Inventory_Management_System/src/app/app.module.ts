@@ -8,6 +8,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
+import { SupplierListComponent } from './supplier-list/supplier-list.component';
+import { SupplierFormComponent } from './supplier-form/supplier-form.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { CategoryFormComponent } from './category-form/category-form.component';
     ProductListComponent,
     ProductFormComponent,
     CategoryListComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    SupplierListComponent,
+    SupplierFormComponent
   ],
   imports: [
     BrowserModule,

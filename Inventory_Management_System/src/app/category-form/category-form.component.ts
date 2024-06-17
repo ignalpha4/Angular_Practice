@@ -34,9 +34,10 @@ export class CategoryFormComponent {
 
     submit(){
 
-    
       const formData = this.Cat_Form.value;
       this.CatData.emit(formData);
+
+      this.Cat_Form.reset();
     }
 
 
