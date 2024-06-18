@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductServiceService } from '../product-service.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,16 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ProductListComponent {
   //array of products
-  products = [
-    {
-      P_Id: 1,
-      P_Name: 'Laptop',
-      P_Category: 'Electronics',
-      P_Quantity: 100,
-      P_Price: 15000,
-      P_Supplier: 'ABC Supplier',
-    },
-  ];
+  products:any[] = [];
+  selectedProduct: any;
+
+  constructor(private productService:ProductServiceService){};
 
   //column definition for grid/table
   ColDef: any[] = [
@@ -47,6 +42,12 @@ export class ProductListComponent {
     },
   ];
 
+  ngOnInit():void{
+    this.productService.products$.subscribe(products=>{
+      this.products = products;
+    })
+  }
+
   deleteUser = (id: any) => {
     //find the index first
     const index = this.products.findIndex((product) => product.P_Id === id);
@@ -55,7 +56,6 @@ export class ProductListComponent {
     this.refreshGrid();
   };
 
-  selectedProduct: any;
 
   editUser = (id: number) => {
     console.log('edit btn clicked');

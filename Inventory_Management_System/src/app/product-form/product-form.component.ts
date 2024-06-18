@@ -4,6 +4,7 @@ import { categoryService } from '../category-service.service';
 
 import { Subscription } from 'rxjs';
 import { SupplierServiceService } from '../supplier-service.service';
+import { ProductServiceService } from '../product-service.service';
 
 @Component({
   selector: 'app-product-form',
@@ -13,16 +14,16 @@ import { SupplierServiceService } from '../supplier-service.service';
 export class ProductFormComponent implements OnInit, OnChanges {
   form!: FormGroup;
 
-  @Output() productData = new EventEmitter();
 
-  @Input() editProduct: any | null = null;
+  @Input() editProduct: any ;
 
   categories: any[] = [];
   suppliers : any[]=[];
 
   private subscription!: Subscription;
 
-  constructor(private fb: FormBuilder,private categoryService:categoryService,private supplierService :SupplierServiceService) {
+  constructor(private fb: FormBuilder,private categoryService:categoryService,private supplierService :SupplierServiceService,
+    private productService:ProductServiceService) {
     this.initForm();
   }
 
@@ -34,6 +35,8 @@ export class ProductFormComponent implements OnInit, OnChanges {
     this.supplierService.suppliers$.subscribe(suppliers=>{
       this.suppliers = suppliers;
     })
+
+  
 
    };
   
@@ -56,14 +59,12 @@ export class ProductFormComponent implements OnInit, OnChanges {
     }
   }
 
-
-
   submit() {
     console.log(this.form.value);
 
     const formData = this.form.value;
 
-    this.productData.emit(formData);
+    this.productService.addData(formData);
 
     this.form.reset();
   }
