@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { categoryService } from '../category-service.service';
+import { categoryService } from '../../category-service.service';
 
 
 @Component({

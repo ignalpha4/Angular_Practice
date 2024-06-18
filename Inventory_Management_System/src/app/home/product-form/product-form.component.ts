@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { categoryService } from '../category-service.service';
+import { categoryService } from '../../category-service.service';
 
 import { Subscription } from 'rxjs';
-import { SupplierServiceService } from '../supplier-service.service';
-import { ProductServiceService } from '../product-service.service';
+import { SupplierServiceService } from '../../supplier-service.service';
+import { ProductServiceService } from '../../product-service.service';
 
 @Component({
   selector: 'app-product-form',

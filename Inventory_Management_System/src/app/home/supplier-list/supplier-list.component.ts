@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SupplierServiceService } from '../supplier-service.service';
+import { SupplierServiceService } from '../../supplier-service.service';
 
 
 @Component({
@@ -18,10 +18,10 @@ export class SupplierListComponent {
   }
 
   colDefs : any[] = [
-    {headerName:"Supplier ID: ",field:"S_Id"},
-    {headerName:"Supplier Name :",field:"S_Name"},
+    {headerName:"Supplier ID: ",field:"S_Id",minWidth:200},
+    {headerName:"Supplier Name :",field:"S_Name",minWidth:280},
     {headerName:"Supplier Contact: ",field:"S_Contact"},
-    {headerName:"Supplier Address",field:"S_Address"},
+    {headerName:"Supplier Address",field:"S_Address",minWidth:400},
     {
       headerName:"Action",
       field:"action",

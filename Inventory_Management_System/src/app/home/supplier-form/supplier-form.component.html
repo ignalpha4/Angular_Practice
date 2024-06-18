@@ -1,9 +1,9 @@
-<p>supplier-form works!</p>
 
+<h3 style="text-align: center;">Supplier Details</h3>
 
 <div class="container">
 
-    <form [formGroup]="SuppForm" (ngSubmit)="submit()" class="form-control">
+    <form [formGroup]="SuppForm" (ngSubmit)="submit()" class="form-control mt-4">
         <h3>Suppliers Details</h3>
 
         <div class="row">
@@ -28,7 +28,9 @@
             </div>
         </div>
         <hr>
-        <button class="btn btn-primary" type="submit" >Submit</button>
+        <div class="submitButton">
+            <button type="submit"  class="btn btn-primary">Submit</button>
+        </div>
     </form>
     <br>
 
