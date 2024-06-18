@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class categoryService {
   private localStorageKey = 'categories';
 
+
   private categoriesSubject = new BehaviorSubject<any[]>(this.getData());
   categories$ = this.categoriesSubject.asObservable();
   

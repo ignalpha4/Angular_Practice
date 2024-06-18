@@ -41,6 +41,7 @@ export class CategoryListComponent implements OnInit {
     this.categoryService.categories$.subscribe(categories => {
       this.categories = categories;
     });
+
   }
 
   deleteCategory(Id: number): void {
@@ -50,4 +51,5 @@ export class CategoryListComponent implements OnInit {
   editCategory(Id: number): void {
     this.selectedCat = this.categories.find((cat) => cat.C_Id === Id);
   }
+
 }

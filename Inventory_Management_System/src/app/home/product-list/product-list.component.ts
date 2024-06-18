@@ -32,11 +32,11 @@ export class ProductListComponent {
       },
       onCellClicked: (params: any) => {
         if (params.event.target.dataset.actionType === 'edit') {
-          this.editUser(params.data.P_Id);
+          this.editProduct(params.data.P_Id);
         }
 
         if (params.event.target.dataset.actionType === 'delete') {
-          this.deleteUser(params.data.P_Id);
+          this.deleteProduct(params.data.P_Id);
         }
       },
     },
@@ -48,48 +48,14 @@ export class ProductListComponent {
     })
   }
 
-  deleteUser = (id: any) => {
-    //find the index first
-    const index = this.products.findIndex((product) => product.P_Id === id);
-
-    this.products.splice(index, 1);
-    this.refreshGrid();
+  deleteProduct = (Id: any) => {
+    this.productService.deleteData(Id);
   };
 
 
-  editUser = (id: number) => {
-    console.log('edit btn clicked');
-    this.selectedProduct = this.products.find((product) => product.P_Id === id);
-    console.log(this.selectedProduct);
+  editProduct = (Id: number) => {
+    this.selectedProduct = this.products.find((pro)=>pro.P_Id===Id);
   };
 
-  receiveData = (formData: any) => {
-    if (this.selectedProduct) {
-      const index = this.products.findIndex(
-        (product) => product.P_Id === this.selectedProduct.P_Id
-      );
-
-      if (index != -1) {
-        this.products[index] = formData;
-        this.selectedProduct=null;
-      }
-    } else {
-      const newProduct = {
-        P_Id: formData.P_Id,
-        P_Name: formData.P_Name,
-        P_Category: formData.P_Category,
-        P_Price: formData.P_Price,
-        P_Quantity: formData.P_Quantity,
-        P_Supplier: formData.P_Supplier,
-      };
-
-      this.products.push(newProduct);
-    }
-    this.refreshGrid();
-  };
-
-  refreshGrid() {
-    this.products = [...this.products];
-  }
-  
+ 
 }

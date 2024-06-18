@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { categoryService } from '../../category-service.service';
-
 import { Subscription } from 'rxjs';
 import { SupplierServiceService } from '../../supplier-service.service';
 import { ProductServiceService } from '../../product-service.service';
@@ -20,7 +19,7 @@ export class ProductFormComponent implements OnInit, OnChanges {
   categories: any[] = [];
   suppliers : any[]=[];
 
-  private subscription!: Subscription;
+
 
   constructor(private fb: FormBuilder,private categoryService:categoryService,private supplierService :SupplierServiceService,
     private productService:ProductServiceService) {
@@ -64,10 +63,16 @@ export class ProductFormComponent implements OnInit, OnChanges {
 
     const formData = this.form.value;
 
+    
+    this.refreshGrid();
     this.productService.addData(formData);
 
     this.form.reset();
+
   }
 
+  refreshGrid(){
+    this.categories=[...this.categories];
+  }
 
 }
