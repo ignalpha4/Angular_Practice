@@ -3,7 +3,7 @@
 
 <div class="container">
 
-    <app-supplier-form (SupplierData)="receiveSuppData($event)"  [editedSupp]="selectedSupplier"></app-supplier-form>
+    <app-supplier-form  [editedSupp]="selectedSupplier"></app-supplier-form>
 
     <ag-grid-angular
     [rowData]="suppliers"

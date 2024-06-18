@@ -85,7 +85,6 @@ export class ProductListComponent {
 
       this.products.push(newProduct);
     }
-
     this.refreshGrid();
   };
 

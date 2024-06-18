@@ -1,81 +1,72 @@
-import { Component, EventEmitter, Input, Output,OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
-import { FormControl,FormBuilder,FormGroup, Validators } from '@angular/forms';
-import { MyServiceService } from '../my-service.service';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { categoryService } from '../category-service.service';
+
+import { Subscription } from 'rxjs';
+import { SupplierServiceService } from '../supplier-service.service';
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  styleUrls: ['./product-form.component.css'],
 })
-export class ProductFormComponent {
+export class ProductFormComponent implements OnInit, OnChanges {
+  form!: FormGroup;
 
-  form!:FormGroup;
+  @Output() productData = new EventEmitter();
 
-  @Output() productData = new EventEmitter(); 
-   
-  @Input() editProduct : any | null = null;
+  @Input() editProduct: any | null = null;
 
-  data:any;
+  categories: any[] = [];
+  suppliers : any[]=[];
 
-  constructor(private fb:FormBuilder, private myService :MyServiceService ){
+  private subscription!: Subscription;
+
+  constructor(private fb: FormBuilder,private categoryService:categoryService,private supplierService :SupplierServiceService) {
     this.initForm();
-    this.data = this.myService.getData();
-    console.log("Changes in constructor",this.data)
   }
 
-  // ngOnInit(){
-  //   this.myService.getData().then((res : any)=>{
-  //     this.data = res;
-  //   });
-  //   console.log("Changes in init",this.data)
-  // }
+  ngOnInit() {
+    this.categoryService.categories$.subscribe(categories => {
+      this.categories = categories;
+    });
 
-  initForm(){
-    this.form =this.fb.group({
-      P_Id:['',Validators.required],
-      P_Name:['',Validators.required],
-      P_Category:[''],
-      P_Quantity:[''],
-      P_Price:[''],
-      P_Supplier:['']
+    this.supplierService.suppliers$.subscribe(suppliers=>{
+      this.suppliers = suppliers;
     })
+
+   };
+  
+
+  initForm() {
+    this.form = this.fb.group({
+      P_Id: ['', Validators.required],
+      P_Name: ['', Validators.required],
+      P_Category: [''],
+      P_Quantity: [''],
+      P_Price: [''],
+      P_Supplier: [''],
+    });
   }
 
-  ngOnChanges(changes:SimpleChanges){
-    if(changes["editProduct"] && changes["editProduct"].currentValue){
-      console.log("chnage detected")
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['editProduct'] && changes['editProduct'].currentValue) {
+      console.log('Change detected');
       this.form.patchValue(this.editProduct);
     }
-
-    // this.data = this.myService.getData();
-
-    // if(changes['data'] ){
-    //   console.log("change detected")
-    // }
-
   }
 
-  toCheck(){
-    console.log("inside tocheck");
-    this.data = this.myService.getData();
-    console.log("Changes in constructor",this.myService.getData())
 
-    
-  }
-  
-  submit(){
 
+  submit() {
     console.log(this.form.value);
 
     const formData = this.form.value;
 
     this.productData.emit(formData);
 
-    const suppliersData = this.myService.getData();
-
-    console.log(suppliersData);
-
     this.form.reset();
   }
+
 
 }

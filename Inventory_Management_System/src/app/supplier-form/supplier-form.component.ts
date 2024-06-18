@@ -1,19 +1,19 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SupplierServiceService } from '../supplier-service.service';
 
 @Component({
   selector: 'app-supplier-form',
   templateUrl: './supplier-form.component.html',
   styleUrls: ['./supplier-form.component.css']
 })
-export class SupplierFormComponent {
+export class SupplierFormComponent implements OnChanges {
 
   SuppForm !: FormGroup;
 
-  @Output() SupplierData =  new EventEmitter();
-  @Input() editedSupp:any | null =null;
+  @Input() editedSupp:any;
   
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder,private supplierService: SupplierServiceService){
     this.initForm();
   }
 
@@ -35,7 +35,8 @@ export class SupplierFormComponent {
 
   submit(){
     const formData = this.SuppForm.value;
-    this.SupplierData.emit(formData);
+    
+    this.supplierService.addData(formData);
 
     this.SuppForm.reset();
   }
