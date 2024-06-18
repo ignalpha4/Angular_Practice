@@ -12,6 +12,12 @@
                     <div class="col-lg">
                         <label for="name">Name :</label>
                         <input type="text" class="form-control" id="name" formControlName="name">
+
+                        <div *ngIf="SignupForm.get('name')?.invalid && SignupForm.get('name')?.touched">
+                            <div *ngif="SignupForm.get('name')?.errors?.['required']">
+                                <p style="color: red;">Name is required !</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -19,12 +25,26 @@
                     <div class="col-lg">
                         <label for="username">Username :</label>
                         <input type="text" class="form-control" id="username" formControlName="username">
+
+                        <!-- validation  -->
+                         <div *ngIf="SignupForm.get('username')?.invalid && SignupForm.get('username')?.touched">
+                            <div *ngIf="SignupForm.get('username')?.errors?.['required']">
+                                <p style="color: red;">Please provide Username</p>
+                            </div>
+                         </div>
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-lg">
                         <label for="password">Password :</label>
                         <input type="text" class="form-control" id="password" formControlName="password">
+
+                        <div *ngIf="SignupForm.get('password')?.invalid && SignupForm.get('password')?.touched">
+                            <div *ngIf="SignupForm.get('password')?.errors?.['required']">
+                               <p style="color: red;"> Please provide password</p> 
+                            </div>
+
+                        </div>
                     </div>
                 </div>
                 <p style="color: red;" *ngIf="errorMsg">{{errorMsg}}</p>
