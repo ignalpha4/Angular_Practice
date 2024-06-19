@@ -9,13 +9,21 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent  {
 
   // protected renderer:string = ''
-  constructor(private router: Router,private userAuthService:UserAuthService) {}
+  constructor(private router: Router,private userAuthService:UserAuthService) {
+
+  }
+
+  ngOnInit(){
+    this.showProducts();
+  }
+
+
 
   get username(){
-    return this.userAuthService.getCurrentUser();
+    return (this.userAuthService.getCurrentUser());
   }
 
   showProducts(): void {

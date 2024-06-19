@@ -12,7 +12,7 @@ export class SignupComponent {
 
   signupForm !:FormGroup;
 
-  erroMsg: string |undefined;
+  erroMsg: string | undefined;
 
   constructor(private fb:FormBuilder, private userAuthService:UserAuthService,private router:Router){
     this.initForm();

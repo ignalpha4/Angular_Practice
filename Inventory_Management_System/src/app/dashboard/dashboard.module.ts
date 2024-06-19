@@ -13,6 +13,7 @@ import { SupplierFormComponent } from './supplier-form/supplier-form.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -25,7 +26,8 @@ import { BrowserModule } from '@angular/platform-browser';
     SupplierListComponent,
     SupplierFormComponent,
     CategoryFormComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
