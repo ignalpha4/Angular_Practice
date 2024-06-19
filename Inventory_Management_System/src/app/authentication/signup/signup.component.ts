@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserAuthService } from '../user-auth.service';
+import { UserAuthService } from '../../services/user-auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,7 +22,7 @@ export class SignupComponent {
     this.signupForm =this.fb.group(
       {
         name:['',Validators.required],
-        email:['',Validators.required],
+        email:['',[Validators.required,Validators.email]],
         password:['',Validators.required]
       }
     )

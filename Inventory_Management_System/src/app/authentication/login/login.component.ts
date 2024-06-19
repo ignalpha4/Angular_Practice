@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserAuthService } from '../user-auth.service';
+import { UserAuthService } from '../../services/user-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent {
   initForm(){
     this.loginForm = this.fb.group(
       {
-        email:['',Validators.required],
+        email:['',[Validators.required,Validators.email]],
         password:['',Validators.required]
       }
     )
@@ -28,7 +28,7 @@ export class LoginComponent {
 
   login(){
     const formData = this.loginForm.value;
-    console.log(formData);
+    console.log(this.loginForm);
 
     if(this.userAuthService.login(formData)){
       

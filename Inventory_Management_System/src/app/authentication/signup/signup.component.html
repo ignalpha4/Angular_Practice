@@ -14,16 +14,36 @@
                     <div class="col-lg-12">
                         <label for="email">Enter Your Email</label>
                         <input type="text" class="form-control" id="email" formControlName="email">
+
+                        <!-- validation  -->
+                        <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                            <div *ngIf="signupForm.get('email')?.errors?.['required']">
+                                <p style="color: red;">Email is required</p>
+                            </div>
+                        </div>
+
+                        <div *ngIf="signupForm.get('email')?.errors?.['email']">
+                            <p style="color: red;">Provide Correct Email Address</p>
+                        </div>
+
                     </div>
                     <div class="col-lg-12">
                         <label for="password">Enter Your Password</label>
                         <input type="text" class="form-control" id="password" formControlName="password">
+
+                        <!-- validation  -->
+                        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+                            <div *ngIf="signupForm.get('password')?.errors?.['required']">
+                                <p style="color: red;">Password is required</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <hr>
                 <div class="row justify-content-center">
                     <div class="col-lg-4">
-                        <button type="submit" class="btn btn-primary">SignUp</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">SignUp</button>
                     </div>
 
                     <div class="col-lg-4">

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserAuthService } from 'src/app/authentication/user-auth.service';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 
 
 
