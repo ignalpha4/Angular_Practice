@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { SupplierServiceService } from '../../supplier-service.service';
+import { SupplierServiceService } from '../services/supplier-service.service';
 
 @Component({
   selector: 'app-supplier-form',

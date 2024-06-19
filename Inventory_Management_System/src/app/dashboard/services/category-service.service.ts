@@ -31,13 +31,13 @@ export class categoryService {
     }
 
     localStorage.setItem(this.localStorageKey, JSON.stringify(categories));
-    this.categoriesSubject.next(categories); // Notify subscribers of the updated data
+    this.categoriesSubject.next(categories); // notify subscribers of the updated data
   }
 
   deleteData(C_Id: number): void {
     const categories = this.getData();
     const updatedCategories = categories.filter((cat: any) => cat.C_Id !== C_Id);
     localStorage.setItem(this.localStorageKey, JSON.stringify(updatedCategories));
-    this.categoriesSubject.next(updatedCategories); // Notify subscribers of the updated data
+    this.categoriesSubject.next(updatedCategories); // notify subscribers of the updated data
   }
 }

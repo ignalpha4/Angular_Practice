@@ -2,10 +2,13 @@
 
 <div class="container-fluid ">
 
-    <div class="row">
+    <div class="row sticky">
 
       <div class="col-2">
         <div class="list-group mt-5">
+
+           <p>Welcome {{username}}</p>
+
           <button type="button" class="list-group-item list-group-item-action" (click)="showProducts()">
             Products
           </button>
@@ -15,11 +18,25 @@
           <button type="button" class="list-group-item list-group-item-action" (click)="showSuppliers()">
             Suppliers
           </button>
+          <br>
+          <br>
+          <button class="btn btn-danger" (click)="logout()">Logout</button>
         </div>
       </div>
   
       <div class="col-10 main-content">
-        <router-outlet></router-outlet>
+        <div  *ngIf="renderer === ''">
+          <app-product-list></app-product-list>
+        </div>
+        <div  *ngIf="renderer === 'Products'">
+          <app-product-list></app-product-list>
+        </div>
+        <div  *ngIf="renderer === 'Categories'">
+          <app-category-list></app-category-list>
+        </div>
+        <div  *ngIf="renderer === 'Suppliers'">
+          <app-supplier-list></app-supplier-list>
+        </div>
       </div>
     </div>
 </div>
