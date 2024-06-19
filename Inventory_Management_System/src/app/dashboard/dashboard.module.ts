@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { AppRoutingModule } from '../app-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CategoryListComponent } from './category-list/category-list.component';
@@ -32,12 +31,10 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     DashboardRoutingModule,
     RouterModule,
-    AppRoutingModule,
     RouterOutlet,
     ReactiveFormsModule,
     AgGridModule,
     BrowserModule,
-
   ]
 })
 export class DashboardModule { }

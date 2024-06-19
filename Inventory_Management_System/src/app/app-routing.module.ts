@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
-import { authGuardGuard } from './authentication/auth-guard.guard';
 
 const routes: Routes = [
-  {path:"dashboard",component:SidebarComponent, canActivate:[authGuardGuard]},
-  {path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, //if home redirect to login
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

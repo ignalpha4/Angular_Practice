@@ -11,26 +11,27 @@ import { UserAuthService } from 'src/app/authentication/user-auth.service';
 })
 export class SidebarComponent {
 
-  protected renderer:string = ''
+  // protected renderer:string = ''
   constructor(private router: Router,private userAuthService:UserAuthService) {}
 
-
-  showProducts(): void {
-
-    this.renderer = "Products" 
-  }
-  
   get username(){
     return this.userAuthService.getCurrentUser();
   }
 
+  showProducts(): void {
+    this.router.navigate(['/dashboard/products']);
+    // this.renderer = "Products" 
+  }
+  
+
   showCategories(): void {
- 
-    this.renderer = "Categories" 
+    this.router.navigate(['/dashboard/categories'])
+    // this.renderer = "Categories" 
   }
   
   showSuppliers(): void {
-    this.renderer = "Suppliers" 
+    this.router.navigate(['/dashboard/suppliers']);
+    // this.renderer = "Suppliers" 
   }
 
   logout(){

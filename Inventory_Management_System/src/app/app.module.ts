@@ -20,7 +20,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
     ReactiveFormsModule,
     AuthenticationModule,
     DashboardModule
-  
   ],
   providers: [],
   bootstrap: [AppComponent]
