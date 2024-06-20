@@ -1,20 +1,23 @@
 import { Component } from '@angular/core';
 import { ProductServiceService } from '../../services/product-service.service';
+import { IProducts } from 'src/app/interfaces/products.interface';
+import { ColDef, ColGroupDef } from 'ag-grid-community';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
+
 })
 export class ProductListComponent {
   //array of products
-  products:any[] = [];
-  selectedProduct: any;
+  products:IProducts[] = [];
+  selectedProduct!: IProducts ;
 
   constructor(private productService:ProductServiceService){};
 
   //column definition for grid/table
-  ColDef: any[] = [
+  ColDef: (ColDef | ColGroupDef)[] = [
     { headerName: 'ID', field: 'P_Id', maxWidth: 90 },
     { headerName: 'Name', field: 'P_Name' },
     { headerName: 'Category', field: 'P_Category' },
@@ -24,7 +27,7 @@ export class ProductListComponent {
     {
       headerName: 'Actions',
       field: 'actions',
-      cellRenderer: (param: any) => {
+      cellRenderer: () => {
         return `
         <button type="button" class="btn btn-sm btn-success" data-action-type="edit">Edit</button>
         <button type="button" class="btn btn-sm btn-danger" data-action-type="delete">Delete</button>
@@ -48,13 +51,21 @@ export class ProductListComponent {
     })
   }
 
-  deleteProduct = (Id: any) => {
+  deleteProduct = (Id: number):void => {
     this.productService.deleteData(Id);
   };
 
 
-  editProduct = (Id: number) => {
-    this.selectedProduct = this.products.find((pro)=>pro.P_Id===Id);
+  editProduct = (Id: number) :void=> {
+    
+    const foundProduct = this.products.find((pro)=>pro.P_Id===Id)
+
+    if(foundProduct){
+      this.selectedProduct = foundProduct;
+      console.log(this.selectedProduct);
+    }else{
+      console.log(`No product found with Id${Id}`);
+    }
   };
 
  

@@ -4,6 +4,9 @@ import { categoryService } from '../../services/category-service.service';
 import { Subscription } from 'rxjs';
 import { SupplierServiceService } from '../../services/supplier-service.service';
 import { ProductServiceService } from '../../services/product-service.service';
+import { IProducts } from 'src/app/interfaces/products.interface';
+import { ICategories } from 'src/app/interfaces/categories.interface';
+import { ISuppliers } from 'src/app/interfaces/suppliers.interface';
 
 @Component({
   selector: 'app-product-form',
@@ -14,10 +17,10 @@ export class ProductFormComponent implements OnInit, OnChanges {
   form!: FormGroup;
 
 
-  @Input() editProduct: any ;
+  @Input() editProduct!:IProducts ;
 
-  categories: any[] = [];
-  suppliers : any[]=[];
+  categories:ICategories[] = [];
+  suppliers : ISuppliers[]=[];
 
 
 

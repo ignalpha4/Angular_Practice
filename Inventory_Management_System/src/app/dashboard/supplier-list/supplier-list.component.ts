@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SupplierServiceService } from '../../services/supplier-service.service';
-
+import { ISuppliers } from 'src/app/interfaces/suppliers.interface';
+import { ColDef, ColGroupDef } from 'ag-grid-community';
 
 @Component({
   selector: 'app-supplier-list',
@@ -10,14 +11,14 @@ import { SupplierServiceService } from '../../services/supplier-service.service'
 export class SupplierListComponent {
 
 
-  suppliers: any[] = [];
-  selectedSupplier :any;
+  suppliers: ISuppliers[] = [];
+  selectedSupplier !:ISuppliers;
 
   constructor(private supplierService:SupplierServiceService){
 
   }
 
-  colDefs : any[] = [
+  colDefs : (ColDef | ColGroupDef)[] = [
     {headerName:"Supplier ID: ",field:"S_Id",minWidth:200},
     {headerName:"Supplier Name :",field:"S_Name",minWidth:280},
     {headerName:"Supplier Contact: ",field:"S_Contact"},
@@ -25,7 +26,7 @@ export class SupplierListComponent {
     {
       headerName:"Action",
       field:"action",
-      cellRenderer:(params:any)=>{
+      cellRenderer:()=>{
         return `
           <button type="button" class="btn btn-success btn-sm" data-action-type="edit">Edit</button>
           <button type="button" class="btn btn-danger btn-sm" data-action-type="delete">Delete</button>
@@ -53,7 +54,14 @@ export class SupplierListComponent {
   }
 
   editSupplier=(Id:number)=>{
-    this.selectedSupplier = this.suppliers.find((sup)=>sup.S_Id===Id);
+
+    const foundSupplier = this.suppliers.find((sup)=>sup.S_Id===Id);
+    if(foundSupplier){
+      this.selectedSupplier = foundSupplier;
+      console.log(this.selectedSupplier);
+    }else{
+      console.log(`no supplier found with id${Id}`);
+    }
   }
   
   

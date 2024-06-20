@@ -12,7 +12,7 @@ export class SignupComponent {
 
   signupForm !:FormGroup;
 
-  erroMsg: string | undefined;
+  erroMsg: string ='';
 
   constructor(private fb:FormBuilder, private userAuthService:UserAuthService,private router:Router){
     this.initForm();
@@ -23,7 +23,8 @@ export class SignupComponent {
       {
         name:['',Validators.required],
         email:['',[Validators.required,Validators.email]],
-        password:['',Validators.required]
+        password:['',Validators.required],
+        role:['',Validators.required]
       }
     )
   }

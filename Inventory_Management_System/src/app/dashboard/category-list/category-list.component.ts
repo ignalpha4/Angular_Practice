@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { categoryService } from '../../services/category-service.service';
+import { ICategories } from 'src/app/interfaces/categories.interface';
+import { ColDef, ColGroupDef } from 'ag-grid-community';
+
 
 
 @Component({
@@ -9,18 +12,19 @@ import { categoryService } from '../../services/category-service.service';
 })
 
 export class CategoryListComponent implements OnInit {
-  categories: any[] = [];
-  selectedCat: any;
+
+  categories: ICategories[] = [];
+  selectedCat!: ICategories;
 
   constructor(private categoryService:categoryService) {}
 
-  colDefs: any[] = [
+  colDefs: (ColDef | ColGroupDef)[] = [
     { headerName: 'Category ID', field: 'C_Id', minWidth: 500 },
     { headerName: 'Category Name', field: 'C_Name', minWidth: 600 },
     {
       headerName: 'Action',
       field: 'action',
-      cellRenderer: (params: any) => {
+      cellRenderer: () => {
         return `
           <button type="button" class="btn btn-sm btn-success" data-action-type="edit">Edit</button>
           <button type="button" class="btn btn-sm btn-danger" data-action-type="delete">Delete</button>
@@ -49,7 +53,15 @@ export class CategoryListComponent implements OnInit {
   }
 
   editCategory(Id: number): void {
-    this.selectedCat = this.categories.find((cat) => cat.C_Id === Id);
+
+    const foundCategory = this.categories.find((cat) => cat.C_Id === Id);
+
+    if (foundCategory) {
+      this.selectedCat = foundCategory;
+      console.log(this.selectedCat);
+    } else {
+      console.log(`Category with ID ${Id} not found.`);
+    }
   }
 
 }

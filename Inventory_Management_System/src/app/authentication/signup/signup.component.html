@@ -1,5 +1,3 @@
-
-
 <div class="container mt-5">
     <div class="row justify-content-center mt-5">
         <div class="col-lg-4">
@@ -9,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <label for="name">Enter Your Name</label>
-                        <input type="text" class="form-control" id="name" formControlName="name"> 
+                        <input type="text" class="form-control" id="name" formControlName="name">
                     </div>
                     <div class="col-lg-12">
                         <label for="email">Enter Your Email</label>
@@ -38,6 +36,20 @@
                             </div>
                         </div>
 
+                    </div>
+                    <!-- for roles  -->
+
+                    <div class="col-lg-4">
+                        <label for="role">ROLE:</label>
+                        <select id="role" formControlName="role" class="form-control">
+                            <option value="user" selected>
+                                User
+                            </option>
+                            <option value="admin">
+                                Admin
+                            </option>
+
+                        </select>
                     </div>
                 </div>
                 <hr>

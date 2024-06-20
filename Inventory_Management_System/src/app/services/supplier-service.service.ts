@@ -1,27 +1,28 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ISuppliers } from '../interfaces/suppliers.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierServiceService {
 
-  private localStorageKey = "suppliers"
+  private localStorageKey:string = "suppliers"
 
-  private suppliersSubject = new BehaviorSubject<any[]>(this.getData());
+  private suppliersSubject = new BehaviorSubject<ISuppliers[]>(this.getData());
   suppliers$ =this.suppliersSubject.asObservable();
 
   constructor() { }
 
-  getData():any[]{
+  getData():ISuppliers[]{
     const data = localStorage.getItem(this.localStorageKey);
     return data ? JSON.parse(data) : [];
   }
 
-  addData(supplier :any):void{
+  addData(supplier :ISuppliers):void{
     const suppliers = this.getData();
 
-    const index = suppliers.findIndex((sup:any)=>sup.S_Id === supplier.S_Id);
+    const index = suppliers.findIndex((sup:ISuppliers)=>sup.S_Id === supplier.S_Id);
 
     if(index!==-1){
       suppliers[index]=supplier;
@@ -37,7 +38,7 @@ export class SupplierServiceService {
   deleteData(S_Id:number):void{
     const suppliers = this.getData();
 
-    const updatedSuppliers = suppliers.filter((sup:any)=>sup.S_Id !==S_Id);
+    const updatedSuppliers = suppliers.filter((sup:ISuppliers)=>sup.S_Id !==S_Id);
     localStorage.setItem(this.localStorageKey,JSON.stringify(updatedSuppliers));
 
     this.suppliersSubject.next(updatedSuppliers);//notification to subscribers of uodated data

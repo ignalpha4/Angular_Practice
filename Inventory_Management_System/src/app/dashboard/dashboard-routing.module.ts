@@ -10,17 +10,27 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: SidebarComponent,
-    children:[
-      {path:"products",component:ProductListComponent},
-      {path:"suppliers",component:SupplierListComponent},
-      {path:"categories",component:CategoryListComponent},
+    children: [
+      { path: 'products', component: ProductListComponent },
+      {
+        path: 'suppliers',
+        component: SupplierListComponent,
+        canActivate: [authGuardGuard],
+        data: { roles: ['admin'] }
+      },
+      {
+        path: 'categories',
+        component: CategoryListComponent,
+        canActivate: [authGuardGuard],
+        data: { roles: ['admin'] }
+      }
     ],
-    canActivate: [authGuardGuard],
-  },
+    canActivate: [authGuardGuard]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

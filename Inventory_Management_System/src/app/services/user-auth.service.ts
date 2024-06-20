@@ -1,5 +1,6 @@
 import { UpperCasePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { IUsers } from '../interfaces/users.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,13 @@ import { Injectable } from '@angular/core';
 export class UserAuthService {
   constructor() { }
 
-  adduser(formdata:any):any{
+  adduser(formdata:IUsers):boolean{
     let users = JSON.parse(localStorage.getItem('users') || '[]');
 
-    let user = users.find((user:any)=>user.email===formdata.email);
+    let user = users.find((user:IUsers)=>user.email===formdata.email);
 
     if(user){
-      return false; //that is user already exists wirh this email
+      return false; //user already exists wirh this email
     }
 
     users.push(formdata);
@@ -23,11 +24,11 @@ export class UserAuthService {
     
   }
 
-  login(formData :any){
+  login(formData :IUsers):boolean{
 
     const users= JSON.parse(localStorage.getItem('users') || '[]');
 
-    const user = users.find((user:any)=>user.email===formData.email && user.password===formData.password);
+    const user = users.find((user:IUsers)=>user.email===formData.email && user.password===formData.password);
 
     if(user){
       return true;
@@ -36,19 +37,19 @@ export class UserAuthService {
     }
   }
 
-  setCurrentUser(email:string){
+  setCurrentUser(email:string):void{
     localStorage.setItem("currentUser",email);
   }
 
-  getCurrentUser(){
+  getCurrentUser():IUsers{
 
     const userEmail =localStorage.getItem('currentUser') || '';
 
     const users= JSON.parse(localStorage.getItem('users') || '[]');
 
-    const user = users.find((user:any)=>user.email===userEmail);
-    console.log("the user that we found",user);
-    return user.name
+    const user = users.find((user:IUsers)=>user.email===userEmail);
+    
+    return user;
 
   }
 
@@ -56,7 +57,7 @@ export class UserAuthService {
     return Boolean(localStorage.getItem("currentUser"));
   }
   
-  logout(){
+  logout():void{
     localStorage.removeItem("currentUser");
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IProducts } from '../interfaces/products.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,20 +9,20 @@ export class ProductServiceService {
 
   private localStorageKey ="products"
 
-  private productsSubject = new BehaviorSubject<any[]>(this.getData());
+  private productsSubject = new BehaviorSubject<IProducts[]>(this.getData());
   products$=this.productsSubject.asObservable();
 
   constructor() { }
 
-  getData():any[]{
+  getData():IProducts[]{
     const data = localStorage.getItem(this.localStorageKey);
     return data ? JSON.parse(data):[];
   }
 
-  addData(product:any):void{
+  addData(product:IProducts):void{
     const products =this.getData();
 
-    const index = products.findIndex((prod:any)=>prod.P_Id ===product.P_Id)
+    const index = products.findIndex((prod:IProducts)=>prod.P_Id ===product.P_Id)
 
     if(index!==-1){
       products[index] =product;
@@ -36,12 +37,10 @@ export class ProductServiceService {
   deleteData(P_Id:number):void{
       const products = this.getData();
 
-      const updatedProducts = products.filter((pro:any)=>pro.P_Id!==P_Id);
+      const updatedProducts = products.filter((pro:IProducts)=>pro.P_Id!==P_Id);
 
       localStorage.setItem(this.localStorageKey,JSON.stringify(updatedProducts));
 
       this.productsSubject.next(updatedProducts);
-
   }
-
 }

@@ -11,10 +11,11 @@ import { UserAuthService } from '../../services/user-auth.service';
 export class LoginComponent {
   loginForm !:FormGroup;
 
-  erroMsg: string |undefined;
+  erroMsg: string = '';
 
   constructor(private fb:FormBuilder, private userAuthService:UserAuthService,private router:Router){
     this.initForm();
+  
   }
 
   initForm(){

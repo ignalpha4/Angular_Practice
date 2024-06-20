@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { categoryService } from '../../services/category-service.service';
+import { ICategories } from 'src/app/interfaces/categories.interface';
 
 @Component({
   selector: 'app-category-form',
@@ -10,7 +11,7 @@ import { categoryService } from '../../services/category-service.service';
 export class CategoryFormComponent implements OnChanges {
   Cat_Form!: FormGroup;
 
-  @Input() editCat: any;
+  @Input() editCat!: ICategories;
 
   constructor(private fb: FormBuilder, private categoryService:categoryService) {
     this.initForm();

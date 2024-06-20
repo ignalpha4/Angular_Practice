@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUsers } from 'src/app/interfaces/users.interface';
 import { UserAuthService } from 'src/app/services/user-auth.service';
-
 
 
 @Component({
@@ -16,13 +16,12 @@ export class SidebarComponent  {
 
   }
 
-  ngOnInit(){
+  ngOnInit():void{
     this.showProducts();
   }
 
 
-
-  get username(){
+  get username():IUsers{
     return (this.userAuthService.getCurrentUser());
   }
 
@@ -42,7 +41,7 @@ export class SidebarComponent  {
     // this.renderer = "Suppliers" 
   }
 
-  logout(){
+  logout():void{
     this.userAuthService.logout();
     this.router.navigate(['/login']);
   }
