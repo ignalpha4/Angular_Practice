@@ -10,7 +10,6 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent  {
-
   // protected renderer:string = ''
   constructor(private router: Router,private userAuthService:UserAuthService) {
 
@@ -19,7 +18,6 @@ export class SidebarComponent  {
   ngOnInit():void{
     this.showProducts();
   }
-
 
   get username():IUsers{
     return (this.userAuthService.getCurrentUser());
@@ -30,12 +28,11 @@ export class SidebarComponent  {
     // this.renderer = "Products" 
   }
   
-
   showCategories(): void {
     this.router.navigate(['/dashboard/categories'])
     // this.renderer = "Categories" 
   }
-  
+
   showSuppliers(): void {
     this.router.navigate(['/dashboard/suppliers']);
     // this.renderer = "Suppliers" 
