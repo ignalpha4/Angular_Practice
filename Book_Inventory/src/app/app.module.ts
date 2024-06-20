@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AuthenticationModule } from './authentication/authentication.module';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    AuthenticationModule
+    AuthenticationModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
