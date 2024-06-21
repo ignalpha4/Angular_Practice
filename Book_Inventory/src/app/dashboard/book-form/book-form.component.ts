@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthorServiceService } from 'src/app/services/author-service.service';
 import { BookServiceService } from 'src/app/services/book-service.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 
 @Component({
   selector: 'app-book-form',
@@ -13,10 +15,23 @@ export class BookFormComponent {
 
   errorMsg:string='';
 
-  constructor(private fb:FormBuilder,private bookService:BookServiceService){
+  //authors and categories
+  authors:any[] =[];
+  categories:any[]=[]
+
+  constructor(private fb:FormBuilder,private bookService:BookServiceService,private categoryService:CategoryServiceService,private authorService:AuthorServiceService){
     this.initForm();
   }
 
+  ngOnInit(){
+    this.categoryService.category$.subscribe((categories)=>{
+      this.categories = categories
+    })
+
+    this.authorService.author$.subscribe((authors)=>{
+      this.authors = authors;
+    })
+  }
   initForm(){
     this.bookForm= this.fb.group({
       title:['',Validators.required],

@@ -19,9 +19,9 @@ export class BookListComponent {
     {headerName:"Title",field:'title'},
     {headerName:"Author",field:'author'},
     {headerName:"Category",field:'category'},
-    {headerName:"ISBN",field:'isbn',minWidth:100},
+    {headerName:"ISBN",field:'isbn',maxWidth:150},
     {headerName:"Description",field:'desc'},
-    {headerName:"Price",field:'price',maxWidth:100},
+    {headerName:"Price",field:'price',maxWidth:120},
     {
       headerName:"Action",
       field:"action",

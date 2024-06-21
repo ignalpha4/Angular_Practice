@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { IUser } from '../interfaces/users.interface';
 import { LiteralPrimitive } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationServiceService {
-  constructor() { }
+  constructor(private router: Router) { }
 
   signup(formData:IUser):boolean{
 
@@ -62,6 +63,8 @@ export class AuthenticationServiceService {
 
   logout(){
     localStorage.removeItem('currentUser');
+    alert("You are logged out !")
+    this.router.navigate(['/login'])
   }
 
 }
