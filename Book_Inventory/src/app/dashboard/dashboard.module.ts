@@ -12,6 +12,7 @@ import { AuthorFormComponent } from './author-form/author-form.component';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
     AuthorFormComponent,
     AuthorListComponent,
     CategoryFormComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    HomepageComponent
   ],
   imports: [
     CommonModule,

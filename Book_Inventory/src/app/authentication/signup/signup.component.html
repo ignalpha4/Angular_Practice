@@ -1,11 +1,11 @@
-
-<div class="container mt-5">
+<div class="container-fluid bg-secondary" style="height: 100vh;">
+<div class="container ">
  
     <div class="row justify-content-center">
-      <div class="col-lg-6">
+      <div class="col-lg-6 mt-5">
   
         <h4 style="text-align: center;">Sign  up form</h4>
-        <form class="p-4 border rounded shadow-sm" [formGroup]="signupForm" (ngSubmit)="signup()">
+        <form class="p-4 border rounded shadow-sm form" [formGroup]="signupForm" (ngSubmit)="signup()">
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="name">
@@ -35,4 +35,4 @@
     
   
   </div>
-  
+</div>

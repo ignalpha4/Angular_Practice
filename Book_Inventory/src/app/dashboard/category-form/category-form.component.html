@@ -1,32 +1,37 @@
-<div class="container mt-5">
+<div class="container-fluid bg-secondary" style="height: 95vh;">
+    <div class="container">
 
-    <div class="row justify-content-center">
-        <div class="col-lg-6">
 
-            <h4 style="text-align: center;">ADD Category</h4>
-            <form class="p-4 border rounded shadow-sm" [formGroup]="categoryForm" (ngSubmit)="submit()">
-
-                <div class="mb-3">
-                    <label for="id" class="form-label">Category ID</label>
-                    <input type="number" class="form-control" id="id" placeholder="Enter ID"
-                        formControlName="id">
-                </div>
-
-                <div class="mb-3">
-                    <label for="name" class="form-label">Category Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Category Name"
-                        formControlName="name">
-                </div>
-               
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary ">ADD Category</button>
-                </div>
-
-            </form>
+        <div class="row justify-content-center">
+            <div class="col-lg-6  mt-5">
+    
+                <h4 style="text-align: center;">ADD Category</h4>
+                <form class="p-4 border rounded shadow-sm form" [formGroup]="categoryForm" (ngSubmit)="submit()">
+    
+                    <div class="mb-3">
+                        <label for="id" class="form-label">Category ID</label>
+                        <input type="number" class="form-control" id="id" placeholder="Enter ID"
+                            formControlName="id">
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Category Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Category Name"
+                            formControlName="name">
+                    </div>
+                   
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary ">ADD Category</button>
+                    </div>
+    
+                </form>
+            </div>
         </div>
+    
+        <app-category-list (selectedCat)="updateCat($event)"></app-category-list>
+    
     </div>
-
-    <app-category-list (selectedCat)="updateCat($event)"></app-category-list>
-
 </div>
+
+
 
