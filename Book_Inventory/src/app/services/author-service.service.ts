@@ -28,8 +28,6 @@ export class AuthorServiceService {
       authors.push(authorData);
     }
 
-
-
     localStorage.setItem('authors',JSON.stringify(authors));
     this.authorSubject.next(authors);
   }
@@ -42,7 +40,7 @@ export class AuthorServiceService {
     
     console.log("these are authors after deletion",foundAuthors)
 
-    localStorage.setItem('authors',foundAuthors);
+    localStorage.setItem('authors',JSON.stringify(foundAuthors));
 
     this.authorSubject.next(foundAuthors);
 

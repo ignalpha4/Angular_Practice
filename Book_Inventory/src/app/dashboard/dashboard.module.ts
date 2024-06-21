@@ -10,6 +10,8 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { BrowserModule, EventManager } from '@angular/platform-browser';
 import { AuthorFormComponent } from './author-form/author-form.component';
 import { AuthorListComponent } from './author-list/author-list.component';
+import { CategoryFormComponent } from './category-form/category-form.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { AuthorListComponent } from './author-list/author-list.component';
     BookFormComponent,
     BookListComponent,
     AuthorFormComponent,
-    AuthorListComponent
+    AuthorListComponent,
+    CategoryFormComponent,
+    CategoryListComponent
   ],
   imports: [
     CommonModule,

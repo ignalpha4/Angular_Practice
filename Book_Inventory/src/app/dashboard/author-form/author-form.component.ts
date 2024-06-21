@@ -29,6 +29,8 @@ export class AuthorFormComponent {
     submit(){
       const addedAuthor =  this.authorForm.value; 
       this.authorService.addData(addedAuthor);
+
+      this.authorForm.reset()
     }
 
     updateAuthor(author:any){
