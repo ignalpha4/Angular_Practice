@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { filter } from 'rxjs';
 import { CategoryServiceService } from 'src/app/services/category-service.service';
 
 @Component({
@@ -22,8 +23,8 @@ export class CategoryListComponent {
     }
 
     colDef:any[]=[
-      {headerName:'Category ID',field:"id",minWidth:100},
-      {headerName:'Category Name',field:'name',minWidth:350},
+      {headerName:'Category ID',field:"id",minWidth:100,filter:true},
+      {headerName:'Category Name',field:'name',minWidth:350,filter:true},
       {
         headerName:'Actions',
         field:'action',

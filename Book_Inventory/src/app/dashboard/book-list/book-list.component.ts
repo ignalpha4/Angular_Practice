@@ -16,12 +16,12 @@ export class BookListComponent {
   constructor(private bookService:BookServiceService){}
 
   colDef:any[]=[
-    {headerName:"Title",field:'title'},
-    {headerName:"Author",field:'author'},
-    {headerName:"Category",field:'category'},
-    {headerName:"ISBN",field:'isbn',maxWidth:150},
+    {headerName:"Title",field:'title',filter:true},
+    {headerName:"Author",field:'author',filter:true},
+    {headerName:"Category",field:'category',filter:true},
+    {headerName:"ISBN",field:'isbn',maxWidth:150,filter:true},
     {headerName:"Description",field:'desc'},
-    {headerName:"Price",field:'price',maxWidth:120},
+    {headerName:"Price",field:'price',maxWidth:120,filter:true},
     {
       headerName:"Action",
       field:"action",

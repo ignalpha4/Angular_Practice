@@ -11,22 +11,25 @@ export class CategoryFormComponent {
 
   categoryForm!:FormGroup;
 
+  counter:number = 1;
+
   constructor(private fb:FormBuilder,private categoryService:CategoryServiceService){
       this.initForm();
   }
 
   initForm(){
     this.categoryForm =this.fb.group({
-       id:['',Validators.required],
+       id:[{value:this.counter,disabled:true},Validators.required],
        name:['',Validators.required]
     })
   }
 
   submit(){
-    const category = this.categoryForm.value;
+    const category = this.categoryForm.getRawValue();
     this.categoryService.addData(category);
-
+    this.counter++;
     this.categoryForm.reset();
+    this.initForm()
   }
 
   updateCat(cat:any){

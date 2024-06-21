@@ -21,9 +21,9 @@ export class AuthorListComponent {
   }
 
   colDef:any[]=[
-    {headerName:'Authors Id',field:'id'},
-    {headerName:'Author Name',field:'name'},
-    {headerName:"Nationality",field:'nation'},
+    {headerName:'Authors Id',field:'id',filter:true},
+    {headerName:'Author Name',field:'name',filter:true},
+    {headerName:"Nationality",field:'nation',filter:true},
     {headerName:"Biography",field:'bio',minWidth:500},
     {
       headerName:"Actions",
