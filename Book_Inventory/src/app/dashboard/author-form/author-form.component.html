@@ -1,5 +1,5 @@
 
-<div class="container-fluid bg-secondary" style="height: 95vh;">
+<div class="container-fluid bg-secondary" style="min-height: 95vh;">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -24,7 +24,7 @@
                     <div class="mb-3">
                         <label for="nation" class="form-label">Nationality</label>
                         <select id="nation" formControlName="nation" class="form-control">
-                            <option value="India">India</option>
+                            <option value="India" selected>India</option>
                             <option value="USA">USA</option>
                             <option value="Japan">Japan</option>
                         </select>
@@ -32,7 +32,7 @@
     
                     <div class="mb-3">
                         <label for="bio" class="form-label">Biography</label>
-                        <textarea name="textarea"  class="form-control" id="bio" formControlName="bio"></textarea>
+                        <textarea name="textarea"  class="form-control" id="bio" formControlName="bio" placeholder="description....."></textarea>
                     </div>
     
                     <div class="text-center">

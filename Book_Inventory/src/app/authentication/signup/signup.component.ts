@@ -21,7 +21,7 @@ export class SignupComponent {
     this.signupForm = this.fb.group(
       {
         name:['',Validators.required],
-        email:['',Validators.required],
+        email:['',[Validators.required,Validators.email]],
         password:['',Validators.required],
         role:['',Validators.required]
       },
@@ -30,7 +30,7 @@ export class SignupComponent {
   }
 
   signup(){
-    console.log(this.signupForm.value);
+    console.log(this.signupForm);
 
     const formData =this.signupForm.value;
 
@@ -38,7 +38,7 @@ export class SignupComponent {
       alert("user signup successfull !");
       this.router.navigate(['/login'])
     }else{
-      this.errorMsg ="User with email already exists";
+      this.errorMsg ="User with this email already exists";
     }
 
   }

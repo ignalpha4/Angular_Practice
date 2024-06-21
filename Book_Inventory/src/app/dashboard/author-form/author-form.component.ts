@@ -15,7 +15,6 @@ export class AuthorFormComponent {
       this.initForm();
     }
 
-
     counter:number = 1;    
 
     initForm(){
@@ -24,7 +23,7 @@ export class AuthorFormComponent {
           id: [{ value: this.counter, disabled: true }, Validators.required],
           name:['',Validators.required],
           bio:['',Validators.required],
-          nation:['',Validators.required]
+          nation:['India',Validators.required]
         }
       )
     }
