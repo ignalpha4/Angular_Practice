@@ -31,7 +31,6 @@ import { HomepageComponent } from './homepage/homepage.component';
     DashboardRoutingModule,
     ReactiveFormsModule,
     AgGridAngular,
-    BrowserModule
   ]
 })
 export class DashboardModule { }

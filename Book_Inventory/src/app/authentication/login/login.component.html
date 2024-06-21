@@ -35,7 +35,7 @@
 
           </div>
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary mb-2">Login</button>
+            <button type="submit" class="btn btn-primary mb-2" [disabled]="loginForm.invalid==true">Login</button>
             <a class="btn btn-outline-primary" routerLink="/signup">New User?</a>
           </div>
         </form>
