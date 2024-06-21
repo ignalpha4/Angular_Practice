@@ -28,6 +28,10 @@ export class BookFormComponent {
     })
   }
 
+  updateBook(book:any){
+    this.bookForm.patchValue(book);
+  }
+
   submit(){
     const book = this.bookForm.value;
     this.bookService.addData(book);

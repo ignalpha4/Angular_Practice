@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { EventEmitter, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -7,6 +7,7 @@ import { BookFormComponent } from './book-form/book-form.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BookListComponent } from './book-list/book-list.component';
 import { AgGridAngular } from 'ag-grid-angular';
+import { BrowserModule, EventManager } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AgGridAngular } from 'ag-grid-angular';
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
-    AgGridAngular
+    AgGridAngular,
+    BrowserModule
   ]
 })
 export class DashboardModule { }

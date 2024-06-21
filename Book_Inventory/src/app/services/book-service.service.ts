@@ -35,10 +35,19 @@ export class BookServiceService {
     return data ? JSON.parse(data):[];
   }
 
-  deletedata(){
-    
+  deletedata(isbn:number){
+
+      let books = this.getData();
+      console.log("isbn",isbn)
+
+      const updatedBooks = books.filter((book:any)=>book.isbn !== isbn)
+
+      localStorage.setItem('books',JSON.stringify(updatedBooks));
+
+      this.booksSubject.next(updatedBooks);
+      
   }
 
-
+  
 
 }

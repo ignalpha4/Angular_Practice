@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BookServiceService } from 'src/app/services/book-service.service';
 
 @Component({
@@ -11,15 +11,17 @@ export class BookListComponent {
 
   books:any[]=[];
 
+  @Output() updateBook= new EventEmitter<any>();
+
   constructor(private bookService:BookServiceService){}
 
   colDef:any[]=[
     {headerName:"Title",field:'title'},
     {headerName:"Author",field:'author'},
     {headerName:"Category",field:'category'},
-    {headerName:"ISBN",field:'isbn'},
+    {headerName:"ISBN",field:'isbn',minWidth:100},
     {headerName:"Description",field:'desc'},
-    {headerName:"Price",field:'price'},
+    {headerName:"Price",field:'price',maxWidth:100},
     {
       headerName:"Action",
       field:"action",
@@ -47,12 +49,16 @@ export class BookListComponent {
     })
   }
 
+
   editBook(isbn:number){
-    console.log("edit btn clicked");
+    const selectedBook = this.books.find((book)=>book.isbn===isbn);
+    this.updateBook.emit(selectedBook);
+    console.log("selecyed book is:",selectedBook)
   }
 
   deleteBook(isbn:number){
     console.log("delete btn clicked");
+    this.bookService.deletedata(isbn);
   }
   
 }
