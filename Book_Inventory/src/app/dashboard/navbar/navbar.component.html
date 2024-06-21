@@ -7,13 +7,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/dashboard">Books</a>
+            <a class="nav-link active" aria-current="page" routerLink="/dashboard/books">Books</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/dashboard">Authors</a>
+            <a class="nav-link active" aria-current="page" routerLink="/dashboard/authors">Authors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/dashboard">Categories</a>
+            <a class="nav-link active" aria-current="page" routerLink="/dashboard">Categories</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -24,4 +24,4 @@
     </div>
   </nav>
 
-  <app-book-form></app-book-form>
+<router-outlet></router-outlet>

@@ -8,13 +8,17 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BookListComponent } from './book-list/book-list.component';
 import { AgGridAngular } from 'ag-grid-angular';
 import { BrowserModule, EventManager } from '@angular/platform-browser';
+import { AuthorFormComponent } from './author-form/author-form.component';
+import { AuthorListComponent } from './author-list/author-list.component';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
     BookFormComponent,
-    BookListComponent
+    BookListComponent,
+    AuthorFormComponent,
+    AuthorListComponent
   ],
   imports: [
     CommonModule,

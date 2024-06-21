@@ -1,0 +1,48 @@
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+            <h4 style="text-align: center;">ADD Author</h4>
+            <form class="p-4 border rounded shadow-sm" [formGroup]="authorForm" (ngSubmit)="submit()">
+
+                <div class="mb-3">
+                    <label for="id" class="form-label">Author ID</label>
+                    <input type="number" class="form-control" id="id" placeholder="Enter Authors Name"
+                        formControlName="id">
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Author Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter Authors Name"
+                        formControlName="name">
+                </div>
+               
+        
+                <div class="mb-3">
+                    <label for="nation" class="form-label">Nationality</label>
+                    <select id="nation" formControlName="nation" class="form-control">
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="Japan">Japan</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Biography</label>
+                    <textarea name="textarea"  class="form-control" id="bio" formControlName="bio"></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary ">ADD Author</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <app-author-list (selectedAuthor)="updateAuthor($event)"></app-author-list>
+
+</div>
+
