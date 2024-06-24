@@ -31,12 +31,11 @@ export class LoginComponent {
       if(this.authService.login(formData)){
         this.authService.setCurrentUser(formData.email);
         alert("login done");
-        this.router.navigate(['/dashboard/home']);
+        this.router.navigate(['/pages/home']);
       }else{
         this.errorMsg = "Incorrect credentials";
       }
     
   }
-
 
 }

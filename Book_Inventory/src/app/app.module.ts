@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AuthenticationModule } from './authentication/authentication.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { PagesModule } from './pages/pages.module';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     RouterModule,
     AppRoutingModule,
     AuthenticationModule,
-    DashboardModule
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
