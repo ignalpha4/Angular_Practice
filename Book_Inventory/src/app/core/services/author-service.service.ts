@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IAuthor } from '../interfaces/author.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,11 @@ export class AuthorServiceService {
     return data ? JSON.parse(data) :[];
   }
 
-  addData(authorData:any){
+  addData(authorData:IAuthor){
 
     const authors = this.getData();
 
-    const index =  authors.findIndex((author:any)=>author.id ===authorData.id);
+    const index =  authors.findIndex((author:IAuthor)=>author.id ===authorData.id);
 
     if(index!==-1){
       authors[index]=authorData;
@@ -36,7 +37,7 @@ export class AuthorServiceService {
 
     const authors = this.getData();
 
-    const foundAuthors = authors.filter((author:any)=>author.id !==id);
+    const foundAuthors = authors.filter((author:IAuthor)=>author.id !==id);
     
     console.log("these are authors after deletion",foundAuthors)
 

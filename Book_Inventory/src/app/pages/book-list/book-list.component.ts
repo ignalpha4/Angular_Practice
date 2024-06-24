@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BookServiceService } from 'src/app/core/services/book-service.service';
+import {ColDef,ColGroupDef} from "ag-grid-community"
+import { IBook } from 'src/app/core/interfaces/book.interface';
 
 @Component({
   selector: 'app-book-list',
@@ -9,13 +11,13 @@ import { BookServiceService } from 'src/app/core/services/book-service.service';
 export class BookListComponent {
 
 
-  books:any[]=[];
+  books:IBook[]=[];
 
   @Output() updateBook= new EventEmitter<any>();
 
   constructor(private bookService:BookServiceService){}
 
-  colDef:any[]=[
+  colDef:(ColDef | ColGroupDef)[]=[
     {headerName:"Title",field:'title',filter:true},
     {headerName:"Author",field:'author',filter:true},
     {headerName:"Category",field:'category',filter:true},

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IAuthor } from 'src/app/core/interfaces/author.interface';
+import { IBook } from 'src/app/core/interfaces/book.interface';
+import { ICategory } from 'src/app/core/interfaces/category.interface';
 import { AuthorServiceService } from 'src/app/core/services/author-service.service';
 import { BookServiceService } from 'src/app/core/services/book-service.service';
 import { CategoryServiceService } from 'src/app/core/services/category-service.service';
@@ -16,8 +19,8 @@ export class BookFormComponent {
   errorMsg:string='';
 
   //authors and categories
-  authors:any[] =[];
-  categories:any[]=[]
+  authors:IAuthor[] =[];
+  categories:ICategory[]=[]
 
   constructor(private fb:FormBuilder,private bookService:BookServiceService,private categoryService:CategoryServiceService,private authorService:AuthorServiceService){
     this.initForm();
@@ -43,7 +46,7 @@ export class BookFormComponent {
     })
   }
 
-  updateBook(book:any){
+  updateBook(book:IBook){
     this.bookForm.patchValue(book);
   }
 

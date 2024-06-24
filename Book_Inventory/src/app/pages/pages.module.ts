@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AgGridAngular } from 'ag-grid-angular';
+import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 import { AuthorFormComponent } from './author-form/author-form.component';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { AvailableBooksComponent } from './available-books/available-books.component';
@@ -32,7 +32,8 @@ import { DashboardRoutingModule } from './pages-routing.module';
     DashboardRoutingModule,
     ReactiveFormsModule,
     AgGridAngular,
-    FormsModule
+    FormsModule,
+    AgGridModule
   ]
 })
 export class PagesModule { }

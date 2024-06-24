@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ICategory } from 'src/app/core/interfaces/category.interface';
 import { CategoryServiceService } from 'src/app/core/services/category-service.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class CategoryFormComponent {
 
     let cats = this.categoryService.getData();
 
-    cats.forEach((cat:any)=>{
+    cats.forEach((cat:ICategory)=>{
       this.counter++;
     })
 
@@ -49,7 +50,7 @@ export class CategoryFormComponent {
     this.initForm()
   }
 
-  updateCat(cat:any){
+  updateCat(cat:ICategory){
     this.categoryForm.patchValue(cat);
   }
 

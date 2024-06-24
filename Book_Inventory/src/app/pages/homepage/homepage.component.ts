@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IUser } from 'src/app/core/interfaces/users.interface';
 import { AuthenticationServiceService } from 'src/app/core/services/authentication-service.service';
 
 @Component({
@@ -7,11 +8,9 @@ import { AuthenticationServiceService } from 'src/app/core/services/authenticati
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent {
-
-  currentUser:any;
+  currentUser:IUser;
 
   constructor(private authService:AuthenticationServiceService){
     this.currentUser= this.authService.getCurrentUser();
   }
-
 }

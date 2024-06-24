@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { filter } from 'rxjs';
+import { ICategory } from 'src/app/core/interfaces/category.interface';
 import { CategoryServiceService } from 'src/app/core/services/category-service.service';
+import { ColDef, ColGroupDef } from 'ag-grid-community';
 
 @Component({
   selector: 'app-category-list',
@@ -9,7 +11,7 @@ import { CategoryServiceService } from 'src/app/core/services/category-service.s
 })
 export class CategoryListComponent {
 
-    categories :any[]=[];
+    categories :ICategory[]=[];
 
     @Output() selectedCat = new EventEmitter<any>();
 
@@ -22,13 +24,13 @@ export class CategoryListComponent {
       })
     }
 
-    colDef:any[]=[
+    colDef:(ColDef |ColGroupDef)[]=[
       {headerName:'Category ID',field:"id",minWidth:100,filter:true},
       {headerName:'Category Name',field:'name',minWidth:350,filter:true},
       {
         headerName:'Actions',
         field:'action',
-        cellRenderer:(params:any)=>{
+        cellRenderer:()=>{
           return `
             <button class="btn btn-success btn-sm" data-action-type="edit">Edit</button>
             <button class="btn btn-danger btn-sm mx-3" data-action-type="delete">Delete</button>
@@ -45,7 +47,7 @@ export class CategoryListComponent {
 
       }
     ]
-
+    
     editCategory(id:number){
       const cat = this.categories.find((cat)=>cat.id===id);
       this.selectedCat.emit(cat);

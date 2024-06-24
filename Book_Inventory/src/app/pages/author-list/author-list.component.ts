@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { IAuthor } from 'src/app/core/interfaces/author.interface';
 import { AuthorServiceService } from 'src/app/core/services/author-service.service';
+import {ColDef,ColGroupDef} from 'ag-grid-community';
+
 
 @Component({
   selector: 'app-author-list',
@@ -8,7 +11,7 @@ import { AuthorServiceService } from 'src/app/core/services/author-service.servi
 })
 export class AuthorListComponent {
 
-  authors:any[]=[];
+  authors:IAuthor[]=[];
 
   @Output() selectedAuthor = new EventEmitter<any>();
 
@@ -20,7 +23,7 @@ export class AuthorListComponent {
       })
   }
 
-  colDef:any[]=[
+  colDef:(ColDef |ColGroupDef)[]=[
     {headerName:'Authors Id',field:'id',filter:true},
     {headerName:'Author Name',field:'name',filter:true},
     {headerName:"Nationality",field:'nation',filter:true},
@@ -28,7 +31,7 @@ export class AuthorListComponent {
     {
       headerName:"Actions",
       field:"action",
-      cellRenderer:(params:any)=>{
+      cellRenderer:()=>{
         return `
          <button class="btn btn-success btn-sm" data-action-type="edit" >Edit</button> 
         <button class="btn btn-danger mx-3 btn-sm" data-action-type="delete">Delete</button> 

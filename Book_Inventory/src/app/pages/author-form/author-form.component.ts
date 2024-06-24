@@ -1,5 +1,6 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IAuthor } from 'src/app/core/interfaces/author.interface';
 import { AuthorServiceService } from 'src/app/core/services/author-service.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { AuthorServiceService } from 'src/app/core/services/author-service.servi
   templateUrl: './author-form.component.html',
   styleUrls: ['./author-form.component.scss']
 })
+
 export class AuthorFormComponent {
 
     authorForm!:FormGroup;
@@ -22,7 +24,7 @@ export class AuthorFormComponent {
 
       let authors = this.authorService.getData();
 
-      authors.forEach((author:any)=>{
+      authors.forEach((author:IAuthor)=>{
         this.counter++;
       })
 
@@ -52,7 +54,7 @@ export class AuthorFormComponent {
       this.initForm();
     }
 
-    updateAuthor(author:any){
+    updateAuthor(author:IAuthor){
       this.authorForm.patchValue(author);
     }
     

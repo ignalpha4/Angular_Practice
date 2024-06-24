@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IBook } from 'src/app/core/interfaces/book.interface';
 import { BookServiceService } from 'src/app/core/services/book-service.service';
 
 @Component({
@@ -8,8 +9,8 @@ import { BookServiceService } from 'src/app/core/services/book-service.service';
 })
 export class AvailableBooksComponent implements OnInit {
 
-  books: any[] = [];
-  filteredBooks: any[] = [];
+  books: IBook[] = [];
+  filteredBooks: IBook[] = [];
   searchKey: string = '';
 
   constructor(private bookService: BookServiceService) {}

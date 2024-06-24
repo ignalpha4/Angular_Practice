@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ICategory } from '../interfaces/category.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,11 @@ export class CategoryServiceService {
       return data ? JSON.parse(data) : [];
   }
 
-  addData(categoryData:any){
+  addData(categoryData:ICategory){
 
     const categories = this.getData();
 
-    const index = categories.findIndex((cat:any)=>cat.id ===categoryData.id);
+    const index = categories.findIndex((cat:ICategory)=>cat.id ===categoryData.id);
 
     if(index!==-1){
       categories[index]=categoryData;
@@ -38,7 +39,7 @@ export class CategoryServiceService {
 
     const categories =  this.getData();
 
-    const updatedCategories = categories.filter((cat:any)=>cat.id !== id);
+    const updatedCategories = categories.filter((cat:ICategory)=>cat.id !== id);
 
     localStorage.setItem('categories',JSON.stringify(updatedCategories));
 
