@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AuthorServiceService } from 'src/app/services/author-service.service';
+import { AuthorServiceService } from 'src/app/core/services/author-service.service';
 
 @Component({
   selector: 'app-author-list',

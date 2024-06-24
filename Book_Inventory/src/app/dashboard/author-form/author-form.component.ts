@@ -1,6 +1,6 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthorServiceService } from 'src/app/services/author-service.service';
+import { AuthorServiceService } from 'src/app/core/services/author-service.service';
 
 @Component({
   selector: 'app-author-form',
@@ -10,22 +10,36 @@ import { AuthorServiceService } from 'src/app/services/author-service.service';
 export class AuthorFormComponent {
 
     authorForm!:FormGroup;
+    counter:number = 1;    
 
     constructor(private fb:FormBuilder,private authorService:AuthorServiceService){
+      this.initilizeCounter()
       this.initForm();
     }
 
-    counter:number = 1;    
+    initilizeCounter(){
+      this.counter= 1;
+
+      let authors = this.authorService.getData();
+
+      authors.forEach((author:any)=>{
+        this.counter++;
+      })
+
+    }
 
     initForm(){
+
       this.authorForm=this.fb.group(
         {
-          id: [{ value: this.counter, disabled: true }, Validators.required],
+          id: [ this.counter, Validators.required],
           name:['',Validators.required],
           bio:['',Validators.required],
           nation:['India',Validators.required]
         }
       )
+      this.authorForm.get('id')?.disable();
+   
     }
 
     submit(){

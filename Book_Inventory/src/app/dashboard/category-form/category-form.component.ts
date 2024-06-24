@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CategoryServiceService } from 'src/app/services/category-service.service';
+import { CategoryServiceService } from 'src/app/core/services/category-service.service';
 
 @Component({
   selector: 'app-category-form',
@@ -13,15 +13,32 @@ export class CategoryFormComponent {
 
   counter:number = 1;
 
+  initializeCounter(){
+
+    this.counter=1;
+
+    let cats = this.categoryService.getData();
+
+    cats.forEach((cat:any)=>{
+      this.counter++;
+    })
+
+  }
+
   constructor(private fb:FormBuilder,private categoryService:CategoryServiceService){
-      this.initForm();
+    this.initializeCounter();
+    this.initForm();
+
   }
 
   initForm(){
+
     this.categoryForm =this.fb.group({
-       id:[{value:this.counter,disabled:true},Validators.required],
+       id:[this.counter,Validators.required],
        name:['',Validators.required]
     })
+
+    this.categoryForm.get('id')?.disable();
   }
 
   submit(){

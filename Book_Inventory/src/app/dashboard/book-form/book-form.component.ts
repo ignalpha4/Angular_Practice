@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthorServiceService } from 'src/app/services/author-service.service';
-import { BookServiceService } from 'src/app/services/book-service.service';
-import { CategoryServiceService } from 'src/app/services/category-service.service';
+import { AuthorServiceService } from 'src/app/core/services/author-service.service';
+import { BookServiceService } from 'src/app/core/services/book-service.service';
+import { CategoryServiceService } from 'src/app/core/services/category-service.service';
 
 @Component({
   selector: 'app-book-form',

@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthenticationServiceService } from '../services/authentication-service.service';
+import { AuthenticationServiceService } from '../core/services/authentication-service.service';
 
 
 @NgModule({
