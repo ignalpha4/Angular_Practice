@@ -1,0 +1,55 @@
+
+<div class="container-fluid " style="min-height: 95vh">
+    <div class="container">
+        <form class="d-flex">
+            <input class="form-control me-2 mt-5" type="search" placeholder="Search" name="search" aria-label="Search"
+                [(ngModel)]="searchKey">
+            <button class="btn btn-success  mt-5" type="button" (click)="updateResults()">Search</button>
+
+        </form>
+
+        <form class="container" [formGroup]="filterForm">
+
+            <div class="row">
+                <div class="col-lg-3 mt-2">
+                    <label for="priority">Priority :</label>
+                    <select class="form-control mt-2" id="priority" formControlName="priority" (change)="onFilterSelect()">
+                        <option value="">Select Priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 mt-2">
+                    <label for="status">Status :</label>
+                    <select class="form-control mt-2" id="status" formControlName="status" (change)="onFilterSelect()">
+                        <option value="">Select Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In progress">In progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+
+                </div>
+            </div>
+          
+        </form>
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4" *ngFor="let task of filteredTasks,let i=index">
+                <div class="card h-100 ">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ task.title }}</h5>
+                        <p class="card-text">
+                            <strong>Description :</strong> {{task.desc}}<br>
+                            <strong>Due Date:</strong> {{ task.date }}<br>
+                            <strong>Priority</strong> {{task.priority}}<br>
+                            <strong>Status:</strong> ₹ {{ task.status }}<br>
+                            ---------------------------------------------------------<br>
+                            <button class="btn btn-success" (click)="editTask(i)">Edit</button>
+                            <button class="btn btn-danger mx-5" (click)="deleteTask(i)">Delete</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

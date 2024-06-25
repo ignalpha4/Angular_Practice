@@ -1,0 +1,48 @@
+<div class="container mt-5">
+
+    <h1 class="mb-4">Summary</h1>
+    
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card border-primary">
+                <div class="card-body text-center">
+                    <i class="fas fa-clock fa-3x mb-3 text-primary"></i>
+                    <h5 class="card-title">Pending</h5>
+                    <p class="card-text">{{pendingCount}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card border-warning">
+                <div class="card-body text-center">
+                    <i class="fas fa-spinner fa-3x mb-3 text-warning"></i>
+                    <h5 class="card-title">In Progress</h5>
+                    <p class="card-text">{{inProgressCount}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card border-success">
+                <div class="card-body text-center">
+                    <i class="fas fa-check-circle fa-3x mb-3 text-success"></i>
+                    <h5 class="card-title">Completed</h5>
+                    <p class="card-text">{{completedCount}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr class="my-4">
+    
+    <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-primary" routerLink="/pages/tasklist">
+            <i class="fas fa-tasks"></i> View Tasks
+        </button>
+        <button type="button" class="btn btn-primary" routerLink="/pages/taskeditor">
+            <i class="fas fa-plus"></i> Create New Task
+        </button>
+
+    </div>
+    
+    <router-outlet></router-outlet>
+</div>
