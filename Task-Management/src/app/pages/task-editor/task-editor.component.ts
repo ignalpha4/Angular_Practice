@@ -17,10 +17,20 @@ export class TaskEditorComponent {
   
   }
 
+
+  //date
+  today = new Date();
+  formattedDate = this.today.toISOString().slice(0, 10);
+
+
+
   ngOnInit(){
 
     this.tasktoedit = this.taskService.getEditTask();
     this.taskForm.patchValue(this.tasktoedit);
+
+    console.log(this.formattedDate);
+    
   }
 
   initForm(){

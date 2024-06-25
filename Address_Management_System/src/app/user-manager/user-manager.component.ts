@@ -17,7 +17,7 @@ export class UserManagerComponent implements OnInit, OnChanges {
 
   constructor(private fb: FormBuilder) {
     this.initForm(); 
-  }
+  } 
 
   ngOnInit(): void {
 
@@ -50,11 +50,8 @@ export class UserManagerComponent implements OnInit, OnChanges {
 
   setAddresses(addresses: any[]) 
   {
-
-    const addressFg = addresses.map(address => this.fb.group(address));
-    const addressArray = this.fb.array(addressFg);
+    const addressArray = this.fb.array(addresses.map(address => this.fb.group(address)));
     this.form.setControl('addresses', addressArray);
-
   }
 
   addAddress() {
@@ -78,7 +75,7 @@ export class UserManagerComponent implements OnInit, OnChanges {
       this.operationMsg.emit("User Info updated");
     }
     const formData = this.form.value;
-    console.log('form  submitted:', formData);
+    console.log('form submitted:', formData);
     this.userDataEvent.emit(formData);
     this.form.reset();
   }

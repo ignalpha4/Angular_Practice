@@ -41,7 +41,6 @@ export class AuthorFormComponent {
         }
       )
       this.authorForm.get('id')?.disable();
-   
     }
 
     submit(){

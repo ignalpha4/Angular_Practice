@@ -38,15 +38,22 @@
                 <div class="card h-100 ">
                     <div class="card-body">
                         <h5 class="card-title">{{ task.title }}</h5>
-                        <p class="card-text">
                             <strong>Description :</strong> {{task.desc}}<br>
                             <strong>Due Date:</strong> {{ task.date }}<br>
-                            <strong>Priority</strong> {{task.priority}}<br>
-                            <strong>Status:</strong> ₹ {{ task.status }}<br>
+                            <strong>Priority: </strong> 
+                            <span *ngIf="task.priority ==='High'">
+                                <i style="color: red;font-size: large;">{{task.priority}} <br></i>
+                            </span>
+                            <span *ngIf="task.priority ==='Medium'">
+                                <i style="color:blue;font-size: large;">{{task.priority}}<br></i>
+                            </span>
+                            <span *ngIf="task.priority ==='Low'">
+                                <i style="color:yellowgreen;font-size: large;">{{task.priority}}<br></i>
+                            </span>
+                            <strong>Status:</strong> {{ task.status }}<br>
                             ---------------------------------------------------------<br>
                             <button class="btn btn-success" (click)="editTask(i)">Edit</button>
                             <button class="btn btn-danger mx-5" (click)="deleteTask(i)">Delete</button>
-                        </p>
                     </div>
                 </div>
             </div>

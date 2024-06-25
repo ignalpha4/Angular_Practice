@@ -16,7 +16,7 @@ export class DashboardComponent {
   completedCount!:number;
 
   ngOnInit(){
-    this.getCount()
+    this.getCount();
   }
 
   getCount(){

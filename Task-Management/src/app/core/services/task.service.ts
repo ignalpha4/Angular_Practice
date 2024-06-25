@@ -22,10 +22,8 @@ export class TaskService {
 
     let index = tasks.findIndex((task:any)=>task.title ===  newTask.title);
 
-    console.log("index is:",index);
-
     if(index!==-1){
-      tasks[index]=newTask;
+      tasks[index]=newTask
     }else{
       tasks.push(newTask);
     }

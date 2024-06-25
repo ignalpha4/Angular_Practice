@@ -8,11 +8,26 @@
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" id="title" placeholder="Enter  Title"
                             formControlName="title" />
+
+                        <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
+                            <div *ngIf="taskForm.get('title')?.errors?.['required']">
+                                    <p style="color: red;">This field is required !</p>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="mb-2">
                         <label for="desc" class="form-label">Description</label>
                         <textarea name="textarea" class="form-control" id="desc" formControlName="desc"
                             placeholder="description....."></textarea>
+
+                            <div *ngIf="taskForm.get('desc')?.invalid && taskForm.get('desc')?.touched">
+                                <div *ngIf="taskForm.get('desc')?.errors?.['required']">
+                                        <p style="color: red;">This field is required !</p>
+                                </div>
+                            </div>
+
                     </div>
                     <div class="mb-2">
                         <div class="mb-2">
@@ -20,7 +35,14 @@
                                 <div class="col-lg-4">
                                     <label for="date" class="form-label">Due Date</label>
                                     <input type="date" class="form-control" id="date" placeholder=""
-                                        formControlName="date" />
+                                        formControlName="date" [min]="formattedDate">
+
+                                    <div *ngIf="taskForm.get('date')?.invalid && taskForm.get('date')?.touched">
+                                        <div *ngIf="taskForm.get('date')?.errors?.['required']">
+                                                <p style="color: red;">This field is required !</p>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="priority" class="form-label">Select Priority</label>
@@ -29,6 +51,12 @@
                                         <option value="Medium">Medium</option>
                                         <option value="Low">Low</option>
                                     </select>
+
+                                    <div *ngIf="taskForm.get('priority')?.invalid && taskForm.get('priority')?.touched">
+                                        <div *ngIf="taskForm.get('priority')?.errors?.['required']">
+                                                <p style="color: red;">This field is required !</p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-4">
@@ -39,6 +67,12 @@
                                         <option value="In progress">In progress</option>
                                         <option value="Completed">Completed</option>
                                     </select>
+
+                                    <div *ngIf="taskForm.get('status')?.invalid && taskForm.get('status')?.touched">
+                                        <div *ngIf="taskForm.get('status')?.errors?.['status']">
+                                                <p style="color: red;">This field is required !</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +80,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary" >{{tasktoedit!==undefined? 'update' :'submit'}}</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid ==true">{{tasktoedit!==undefined? 'update' :'submit'}}</button>
                     </div>
                 </form>
             </div>
