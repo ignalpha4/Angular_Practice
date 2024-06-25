@@ -28,8 +28,9 @@ export class LoginComponent {
   login(){
     let loginUser = this.loginForm.value;
     if(this.userService.login(loginUser)){
-      alert("login done")
       this.userService.setCurrentUser(loginUser);
+      alert("login done")
+
       this.router.navigate(['pages']);
     }else{
       this.errorMsg= "invalid credentials!"

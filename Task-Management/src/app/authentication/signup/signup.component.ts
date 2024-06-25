@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserAuthService } from 'src/app/core/services/user-auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class SignupComponent {
   signupForm!:FormGroup;
   errorMsg:string = ''
 
-  constructor(private fb:FormBuilder,private userService :UserAuthService){
+  constructor(private fb:FormBuilder,private userService :UserAuthService,private router:Router){
       this.initForm()
   }
 
@@ -28,5 +29,9 @@ export class SignupComponent {
     let newUser = this.signupForm.value;
     console.log(newUser);
     this.userService.addData(newUser);
+
+    alert("User signed in successfully");
+    
+    this.router.navigate(['/login'])
   }
 }

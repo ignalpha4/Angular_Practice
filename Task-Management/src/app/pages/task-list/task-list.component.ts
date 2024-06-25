@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription, take } from 'rxjs';
+import { ITask } from 'src/app/core/interfaces/task.interface';
 import { TaskService } from 'src/app/core/services/task.service';
 
 @Component({
@@ -16,8 +17,8 @@ export class TaskListComponent {
   private taskSubscription: Subscription = new Subscription();
 
   searchKey:string =''
-  tasks:any[]=[];
-  filteredTasks:any[]=[];
+  tasks:ITask[]=[];
+  filteredTasks:ITask[]=[];
   
   constructor(private taskService:TaskService,private router:Router,private fb:FormBuilder){
     this.initForm()

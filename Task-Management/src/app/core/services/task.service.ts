@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ITask } from '../interfaces/task.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,10 @@ export class TaskService {
      return data ? JSON.parse(data) : [];
   }
 
-  addData(newTask:any){
+  addData(newTask:ITask){
     let tasks = this.getData();
 
-    let index = tasks.findIndex((task:any)=>task.title ===  newTask.title);
+    let index = tasks.findIndex((task:ITask)=>task.title ===  newTask.title);
 
     if(index!==-1){
       tasks[index]=newTask

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IUser } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,6 @@ export class UserAuthService {
 
   }
 
-  userSubject = new BehaviorSubject<any>(this.getData());
-  user$ = this.userSubject.asObservable();
-
 
   getData(){
 
@@ -22,11 +20,11 @@ export class UserAuthService {
   }
 
 
-  addData(newUser:any){
+  addData(newUser:IUser){
 
     let users = this.getData();
 
-    let index = users.findIndex((user:any)=>user.name === newUser.name);
+    let index = users.findIndex((user:IUser)=>user.name === newUser.name);
 
     if(index!==-1){
       users[index]=newUser;
@@ -35,23 +33,26 @@ export class UserAuthService {
     }
 
     localStorage.setItem("users",JSON.stringify(users));
-    this.userSubject.next(users);
   }
 
-  login(loginUser:any){
+  login(loginUser:IUser){
 
     let users= this.getData();
 
-    let user = users.find((user:any)=>user.email ===loginUser.email && user.password ===loginUser.password);
+    let user = users.find((user:IUser)=>user.email ===loginUser.email && user.password ===loginUser.password);
     if(!user){
       return false;
     }
     return true;
   }
 
-  setCurrentUser(loginUser:any){
+  setCurrentUser(loginUser:IUser){
     console.log("setting current user");
-    localStorage.setItem('currenUser',loginUser.email);
+    localStorage.setItem('currentUser',loginUser.email);
+  }
+
+  getCurrentUser(){
+    return localStorage.getItem('currentUser');
   }
 
   logout(){

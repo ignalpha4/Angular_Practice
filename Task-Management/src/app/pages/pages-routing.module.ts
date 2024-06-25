@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TaskEditorComponent } from './task-editor/task-editor.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { authGuard } from '../core/guards/auth.guard';
 
 const routes: Routes = [
   {path:"",component:NavbarComponent,
@@ -11,7 +12,8 @@ const routes: Routes = [
       {path:"dashboard",component:DashboardComponent},
       {path:"taskeditor",component:TaskEditorComponent},
       {path:"tasklist",component:TaskListComponent},
-    ]
+    ],
+    canActivate:[authGuard]
   }
 ];
 
