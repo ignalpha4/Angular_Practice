@@ -57,5 +57,4 @@ export class AuthorFormComponent {
     updateAuthor(author:IAuthor){
       this.authorForm.patchValue(author);
     }
-    
 }

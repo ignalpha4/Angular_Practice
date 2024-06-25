@@ -18,8 +18,8 @@
                             <div class="col-lg-6">
                                 <label for="author" class="form-label">Select Author</label>
                     
-                                <select id="author" formControlName="author" class="form-control">
-                                    <option *ngFor="let author of authors" [value]="author.name">
+                                <select id="author" formControlName="author" class="form-control" >
+                                    <option *ngFor="let author of authors" [value]="author.name" >
                                         {{ author.name }}
                                     </option>
                                     <!-- <option value="jk rowling" >jk rowling</option> -->
