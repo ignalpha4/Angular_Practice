@@ -14,7 +14,6 @@ export class TaskEditorComponent {
 
   constructor(private fb:FormBuilder,private taskService:TaskService){
     this.initForm();
-  
   }
 
 

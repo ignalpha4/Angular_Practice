@@ -8,6 +8,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
+import { TaskService } from '../core/services/task.service';
 
 
 @NgModule({
@@ -15,14 +16,16 @@ import { AgGridModule } from 'ag-grid-angular';
     DashboardComponent,
     TaskEditorComponent,
     TaskListComponent,
-    NavbarComponent
+    NavbarComponent,
+
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     ReactiveFormsModule,
     AgGridModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class PagesModule { }

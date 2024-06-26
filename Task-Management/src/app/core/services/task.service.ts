@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ITask } from '../interfaces/task.interface';
 
@@ -8,10 +8,22 @@ import { ITask } from '../interfaces/task.interface';
 export class TaskService {
 
 
-  taskSubject = new BehaviorSubject<any>(this.getData());
-  task$ = this.taskSubject.asObservable();
+  taskSubject = new BehaviorSubject(this.getData());
 
-  taskToEdit :any = null;
+  // tasksList :EventEmitter<any> = new EventEmitter<any>(); 
+
+  taskData :any = []
+
+  taskToEdit:any = null;
+
+
+  constructor() {
+
+      // this.taskData = this.getData()
+
+      // this.tasksList.emit(this.taskData);
+
+  }
 
   getData(){
      let data =  localStorage.getItem('tasks');
@@ -19,6 +31,7 @@ export class TaskService {
   }
 
   addData(newTask:ITask){
+
     let tasks = this.getData();
 
     let index = tasks.findIndex((task:ITask)=>task.title ===  newTask.title);
@@ -30,8 +43,13 @@ export class TaskService {
     }
 
     localStorage.setItem('tasks',JSON.stringify(tasks));
+
     this.taskSubject.next(tasks);
+
+    // this.tasksList.emit(tasks);
   }
+
+
 
   deleteTask(index:number){
       console.log(index);
@@ -43,7 +61,7 @@ export class TaskService {
       localStorage.setItem('tasks',JSON.stringify(tasks));
 
       this.taskSubject.next(tasks);
-
+      // this.tasksList.emit(tasks);
   }
 
   editTask(index:number){
@@ -57,5 +75,4 @@ export class TaskService {
     }
   }
 
-  constructor() { }
 }

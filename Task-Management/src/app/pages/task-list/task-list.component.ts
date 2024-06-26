@@ -17,7 +17,9 @@ export class TaskListComponent {
   private taskSubscription: Subscription = new Subscription();
 
   searchKey:string =''
-  tasks:ITask[]=[];
+
+  tasks:any[]=[];
+
   filteredTasks:ITask[]=[];
   
   constructor(private taskService:TaskService,private router:Router,private fb:FormBuilder){
@@ -34,15 +36,24 @@ export class TaskListComponent {
   }
 
   ngOnInit() {
-    this.taskSubscription = this.taskService.task$.subscribe((tasks) => {
+
+    this.taskSubscription = this.taskService.taskSubject.subscribe((tasks) => {
       this.tasks = tasks;
       this.filteredTasks = tasks;
     });
+
+    // this.taskService.tasksList.subscribe(tasks=>{
+    //   this.tasks = tasks;
+    //   this.filteredTasks = tasks;
+    // })
+
+    // this.taskService.listItems();
   }
 
   ngOnDestroy() {
     this.taskSubscription.unsubscribe();
   }
+
 
   priority:string = '';
   status:string='';
