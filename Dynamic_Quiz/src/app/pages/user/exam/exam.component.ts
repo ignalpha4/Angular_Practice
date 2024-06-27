@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { ExamsService } from 'src/app/core/services/exams.service';
 import { QuestionService } from 'src/app/core/services/question.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class ExamComponent implements OnInit {
   questionsData: any;
   score: number = 0;
 
-  constructor(private questionService: QuestionService, private fb: FormBuilder) {}
+  constructor(private questionService: QuestionService, private fb: FormBuilder,private examService:ExamsService) {}
 
   ngOnInit() {
     this.questionsData = this.questionService.getData();
@@ -56,9 +57,9 @@ export class ExamComponent implements OnInit {
   submitTest() {
 
     this.score = 0;
-
+    let total = 0;
     const testResponses = this.examForm.value.questions.map((question: any) => {
-
+      total++;
       const isCorrect = question.answer === question.correctOption;
  
       if (isCorrect) {
@@ -82,5 +83,10 @@ export class ExamComponent implements OnInit {
     testResponses.push({score:this.score,date:testDate});
 
     console.log("test response:",testResponses)
+
+    alert("You Scored : "+this.score+" out of "+ total)
+
+    this.examService.addData(testResponses);
+    
   }
 }

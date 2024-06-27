@@ -1,7 +1,7 @@
 <div class="container">
-    <form [formGroup]="examForm" (ngSubmit)="submitTest()">
+    <form [formGroup]="examForm" (ngSubmit)="submitTest()" class="form-control mt-5">
 
-      <div class="row mb-4" formArrayName="questions" *ngFor="let question of questions.controls; let i = index">
+      <div class="row" formArrayName="questions" *ngFor="let question of questions.controls; let i = index">
 
         <div [formGroupName]="i" class="col-12">
 
@@ -26,17 +26,14 @@
 
             <div class="form-check">
               <input type="radio" id="option4-{{i}}" formControlName="answer" value="4" class="form-check-input" />
-              <label class="form-check-label" for="option4-{{i}}">{{ question.value.o4 }}</label>
+              <label class="form-check-label mb-3" for="option4-{{i}}">{{ question.value.o4 }}</label>
             
             </div>
           </div>
         </div>
+        <hr>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
-
-      <div>
-        <p>Result : {{score}}</p>
-      </div>
     </form>
   </div>
   
