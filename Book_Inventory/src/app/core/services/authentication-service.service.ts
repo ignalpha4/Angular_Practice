@@ -57,9 +57,9 @@ export class AuthenticationServiceService {
 
   }
 
-  isAuthenticated():boolean{
-    return Boolean(localStorage.getItem('currentUser'));
-  }
+  // isAuthenticated():boolean{
+  //   return Boolean(localStorage.getItem('currentUser'));
+  // }
 
   logout(){
     localStorage.removeItem('currentUser');

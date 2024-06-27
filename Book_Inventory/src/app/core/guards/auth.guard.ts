@@ -14,8 +14,9 @@ export const authGuard: CanActivateFn = (route, state) => {
     router.navigate(['/login']);
     return false;
   }
-
   const requiredRole = route.data?.['roles'];
+
+  console.log("from guard",requiredRole)
 
   if(requiredRole && !requiredRole.includes(currentUser.role)){
     alert("user not authorized to access this feature");

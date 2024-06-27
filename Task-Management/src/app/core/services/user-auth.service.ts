@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { IUser } from '../interfaces/user.interface';
 
 @Injectable({
@@ -11,7 +10,6 @@ export class UserAuthService {
   constructor() { 
 
   }
-
 
   getData(){
 

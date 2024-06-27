@@ -53,9 +53,7 @@ export class BookFormComponent {
   submit(){
     const book = this.bookForm.value;
     this.bookService.addData(book);
-
     this.bookForm.reset();
-   
   }
 
 }
