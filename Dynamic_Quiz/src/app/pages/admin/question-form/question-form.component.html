@@ -1,0 +1,56 @@
+
+
+<div class="container">
+    <form action="" class="form-control mt-5 mx-5" [formGroup]="questionForm" (ngSubmit)="submit()">
+        <h1>Question Form</h1>
+        <div class="row">
+            <div class="col-lg-2">
+                <label for="q_no"> Question Number:</label>
+                <input type="number" class="form-control" id="q_no" formControlName="q_no">
+            </div>
+            <div class="col-lg-10">
+                <label for="question"> Question :</label>
+                <input type="text" class="form-control" id="question" formControlName="question">
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-3">
+                <label for="o1">Option 1</label>
+                <input type="text" class="form-control" id="o1" formControlName="o1">
+            </div>
+            <div class="col-lg-3">
+                <label for="o2">Option 2</label>
+                <input type="text" class="form-control" id="o2" formControlName="o2">
+            </div>
+            <div class="col-lg-3">
+                <label for="o3">Option 3</label>
+                <input type="text" class="form-control" id="o3" formControlName="o3">
+            </div>
+            <div class="col-lg-3">
+                <label for="o4">Option 4</label>
+                <input type="text" class="form-control" id="o4" formControlName="o4">
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <label for="correctOption">Correct Option</label>
+                <select  id="correctOption" class="form-control" formControlName="correctOption"> 
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="col-lg-6">
+                <label for="difficulty">Difficulty :</label>
+                <input type="number" class="form-control" id="difficulty" min="1" max="10" required formControlName="difficulty">
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-center d-flex">
+            <button class="btn btn-primary" type="submit" style="max-width: 150px;">{{question==null ? 'Submit' :'update'}}</button>
+        </div>
+    </form>
+</div>
