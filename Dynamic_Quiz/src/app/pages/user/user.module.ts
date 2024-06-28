@@ -7,13 +7,15 @@ import { ExamComponent } from './exam/exam.component';
 import { ReviewComponent } from './review/review.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewExamComponent } from './view-exam/view-exam.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     ExamComponent,
-    ReviewComponent
+    ReviewComponent,
+    ViewExamComponent
   ],
   imports: [
     CommonModule,

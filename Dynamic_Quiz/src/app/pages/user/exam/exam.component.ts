@@ -17,8 +17,13 @@ export class ExamComponent implements OnInit {
   constructor(private questionService: QuestionService, private fb: FormBuilder,private examService:ExamsService) {}
 
   ngOnInit() {
-    this.questionsData = this.questionService.getData();
-    this.initForm();
+    
+      let data = this.questionService.getData();
+    
+      this.questionsData = data.sort(() => 0.5 - Math.random()).slice(0, 10);
+    
+      this.initForm();
+
   }
 
   initForm() {
@@ -67,6 +72,7 @@ export class ExamComponent implements OnInit {
       }
 
       return {
+        q_no:question.q_no,
         question:question.question,
         o1:question.o1,
         o2:question.o2,
@@ -78,9 +84,11 @@ export class ExamComponent implements OnInit {
       };
     });
 
-    let testDate =  new Date();
+    let testDate = new Date();
+    let date = testDate.toLocaleDateString();
+    let time = testDate.toLocaleTimeString();
 
-    testResponses.push({score:this.score,date:testDate});
+    testResponses.push({score:this.score,date:date,time:time});
 
     console.log("test response:",testResponses)
 

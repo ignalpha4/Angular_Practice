@@ -1,39 +1,42 @@
 <div class="container">
-    <form [formGroup]="examForm" (ngSubmit)="submitTest()" class="form-control mt-5">
-
-      <div class="row" formArrayName="questions" *ngFor="let question of questions.controls; let i = index">
-
-        <div [formGroupName]="i" class="col-12">
-
-          <div class="form-group">
-
-            <label class="form-label">{{ question.value.q_no }}. {{ question.value.question }}</label>
-
-            <div class="form-check">
-              <input type="radio" id="option1-{{i}}" formControlName="answer" value="1" class="form-check-input" />
-              <label class="form-check-label" for="option1-{{i}}">{{ question.value.o1 }}</label>
-            </div>
-
-            <div class="form-check">
-              <input type="radio" id="option2-{{i}}" formControlName="answer" value="2" class="form-check-input" />
-              <label class="form-check-label" for="option2-{{i}}">{{ question.value.o2 }}</label>
-            </div>
-
-            <div class="form-check">
-              <input type="radio" id="option3-{{i}}" formControlName="answer" value="3" class="form-check-input" />
-              <label class="form-check-label" for="option3-{{i}}">{{ question.value.o3 }}</label>
-            </div>
-
-            <div class="form-check">
-              <input type="radio" id="option4-{{i}}" formControlName="answer" value="4" class="form-check-input" />
-              <label class="form-check-label mb-3" for="option4-{{i}}">{{ question.value.o4 }}</label>
-            
-            </div>
-          </div>
-        </div>
-        <hr>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
   
+  <form [formGroup]="examForm" (ngSubmit)="submitTest()" class="mt-5">
+
+    <div class="card mt-3" formArrayName="questions" *ngFor="let question of questions.controls; let i = index">
+      <div [formGroupName]="i">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ question.value.q_no }}. {{ question.value.question }}</h5>
+
+          <div class="form-check">
+            <input type="radio" id="option1-{{i}}" formControlName="answer" value="1" class="form-check-input">
+            <label class="form-check-label" for="option1-{{i}}">{{ question.value.o1 }}</label>
+          </div>
+
+          <div class="form-check">
+            <input type="radio" id="option2-{{i}}" formControlName="answer" value="2" class="form-check-input">
+            <label class="form-check-label" for="option2-{{i}}">{{ question.value.o2 }}</label>
+          </div>
+
+          <div class="form-check">
+            <input type="radio" id="option3-{{i}}" formControlName="answer" value="3" class="form-check-input">
+            <label class="form-check-label" for="option3-{{i}}">{{ question.value.o3 }}</label>
+          </div>
+
+          <div class="form-check mb-3">
+            <input type="radio" id="option4-{{i}}" formControlName="answer" value="4" class="form-check-input">
+            <label class="form-check-label" for="option4-{{i}}">{{ question.value.o4 }}</label>
+          </div>
+
+        </div>
+      </div>
+ 
+    </div>
+    <!-- submit btn  -->
+
+    <div class="d-flex h-100 justify-content-center">
+      <button type="submit" class="btn btn-primary btn-lg mt-4 mb-5">Submit</button>
+    </div>
+
+  </form>
+</div>

@@ -1,14 +1,13 @@
-
-
 <div class="container">
     <h4>Your Exams</h4>
     <div class="row" *ngFor="let exam of exams">
         <div class="card mt-4">
             <div class="card-body">
-                <p class="card-title">Date of Exam : {{exam[8].date}}</p>
-                <p class="card-title">Score : {{exam[8].score}}</p>
+                <p class="card-title">Date of Exam : {{exam[10].date}}</p>
+                <p class="card-title">Time of Exam : {{exam[10].time}}</p>
+                <p class="card-title">Score : {{exam[10].score}}</p>
+                <button class="btn btn-primary" (click)="viewExam(exam)">View</button>
             </div>
         </div>
-        
     </div>
 </div>

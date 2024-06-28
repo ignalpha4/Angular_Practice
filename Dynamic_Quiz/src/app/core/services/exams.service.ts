@@ -22,4 +22,11 @@ export class ExamsService {
     this.examSubject.next(exams);
   }
 
+  viewExam(exam:any){
+    localStorage.setItem('viewExam',JSON.stringify(exam));
+  }
+
+  getExam(){
+    return JSON.parse(localStorage.getItem('viewExam') || '[]');
+  }
 }
