@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { ViewExamComponent } from './view-exam/view-exam.component';
 
 const routes: Routes = [
   {path:'dashboard',component:DashboardComponent,
     children:[
       {path:'questionList',component:QuestionListComponent},
-      {path:'questionForm',component:QuestionFormComponent}
+      {path:'testDetails',component:TestDetailsComponent},
+      {path:'questionForm',component:QuestionFormComponent},
+      {path:'viewExam',component:ViewExamComponent}
     ]
   },
 

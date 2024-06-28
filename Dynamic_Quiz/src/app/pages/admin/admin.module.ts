@@ -8,13 +8,15 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { RouterModule } from '@angular/router';
+import { TestDetailsComponent } from './test-details/test-details.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     QuestionListComponent,
-    QuestionFormComponent
+    QuestionFormComponent,
+    TestDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -7,7 +7,8 @@ import { ExamComponent } from './exam/exam.component';
 import { ReviewComponent } from './review/review.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ViewExamComponent } from './view-exam/view-exam.component';
+import { ViewExamComponent } from '../admin/view-exam/view-exam.component';
+import { StartExamComponent } from './start-exam/start-exam.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ViewExamComponent } from './view-exam/view-exam.component';
     DashboardComponent,
     ExamComponent,
     ReviewComponent,
-    ViewExamComponent
+    ViewExamComponent,
+    StartExamComponent
   ],
   imports: [
     CommonModule,
