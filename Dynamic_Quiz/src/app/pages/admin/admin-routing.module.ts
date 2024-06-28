@@ -14,10 +14,8 @@ const routes: Routes = [
       {path:'questionForm',component:QuestionFormComponent},
       {path:'viewExam',component:ViewExamComponent}
     ]
-  },
-
+  }
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
