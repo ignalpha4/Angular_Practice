@@ -23,7 +23,7 @@ export class LoginComponent {
   initForm(){
     this.loginForm = this.fb.group({
       email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.pattern(' /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-.]+\.[a-zA-Z]{2,4}$/')]],
+      password:['',Validators.required],
     })
   }
 

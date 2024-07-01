@@ -32,17 +32,6 @@ export class QuestionFormComponent{
     });
     console.log('Form initialized:', this.questionForm);
   }
-
-  insertData() {
-    if (this.question) {
-      console.log('Inserting data:', this.question);
-      this.questionForm.patchValue(this.question);
-      console.log('Form after patch:', this.questionForm.value);
-    } else {
-      console.log('No question data available to insert.');
-    }
-  }
-
   submit() {
     const question = this.questionForm.value;
     console.log('Submitting form:', question);

@@ -8,6 +8,7 @@ import { ChartConfiguration, ChartDataset } from 'chart.js';
   styleUrls: ['./dashboard-content.component.scss']
 })
 export class DashboardContentComponent {
+
   data: any;
   scores: number[] = [];
   users: string[] = [];
@@ -25,7 +26,11 @@ export class DashboardContentComponent {
   constructor(private examService: ExamsService) {
     this.examService.examSubject.subscribe((exams: any) => {
       this.data = exams;
+      console.log(this.data);
+      
       this.scores = this.data.map((test: any) => test[test.length - 1].score);
+      console.log(this.scores);
+      
       this.users = this.data.map((test: any) => test[test.length - 1].username);
       this.updateChartData();
     });

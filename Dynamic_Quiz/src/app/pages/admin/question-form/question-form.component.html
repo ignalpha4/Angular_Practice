@@ -1,7 +1,7 @@
 
 
 <div class="container">
-    <form action="" class="form-control mt-5 mx-5" [formGroup]="questionForm" (ngSubmit)="submit()">
+    <form  class="form-control mt-5 mx-5" [formGroup]="questionForm" (ngSubmit)="submit()">
         <h1>Question Form</h1>
         <div class="row">
             <div class="col-lg-2">
@@ -15,6 +15,7 @@
         </div>
 
         <div class="row mt-2">
+
             <div class="col-lg-3">
                 <label for="o1">Option 1</label>
                 <input type="text" class="form-control" id="o1" formControlName="o1">
@@ -31,6 +32,7 @@
                 <label for="o4">Option 4</label>
                 <input type="text" class="form-control" id="o4" formControlName="o4">
             </div>
+            
         </div>
 
         <div class="row mt-2">
