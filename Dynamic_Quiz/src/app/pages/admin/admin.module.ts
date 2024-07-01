@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { RouterModule } from '@angular/router';
 import { TestDetailsComponent } from './test-details/test-details.component';
+import { DashboardContentComponent } from './dashboard-content/dashboard-content.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { TestDetailsComponent } from './test-details/test-details.component';
     DashboardComponent,
     QuestionListComponent,
     QuestionFormComponent,
-    TestDetailsComponent
+    TestDetailsComponent,
+    DashboardContentComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +27,8 @@ import { TestDetailsComponent } from './test-details/test-details.component';
     ReactiveFormsModule,
     FormsModule,
     AgGridModule,
-    RouterModule
+    RouterModule,
+    NgChartsModule,
   ]
 })
 export class AdminModule { }

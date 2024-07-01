@@ -38,7 +38,7 @@ export class LoginComponent {
 
       if(user.role==='admin'){
         alert("Admin Login Successfull ! ");
-        this.router.navigate(['/pages/admin/dashboard']);
+        this.router.navigate(['/pages/admin/dashboard/dashboardContent']);
       }
       if(user.role==='user'){
         alert('User login successfull !');
