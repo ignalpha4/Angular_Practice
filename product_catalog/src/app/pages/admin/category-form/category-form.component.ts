@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICat } from 'src/app/core/interfaces/category.interface';
 import { CategoryService } from 'src/app/core/services/category.service';
 
@@ -26,8 +26,8 @@ export class CategoryFormComponent implements OnChanges {
 
   initForm(): void {
     this.Cat_Form = this.fb.group({
-      C_Id: [''],
-      C_Name: ['']
+      C_Id: ['',Validators.required],
+      C_Name: ['',Validators.required],
     });
   }
 

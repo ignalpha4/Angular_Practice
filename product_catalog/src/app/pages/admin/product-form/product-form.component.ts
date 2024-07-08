@@ -1,4 +1,4 @@
-import {Component,Input,OnChanges,SimpleChanges,OnInit} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICat } from 'src/app/core/interfaces/category.interface';
 import { IProduct } from 'src/app/core/interfaces/product.interface';
@@ -12,7 +12,6 @@ import { SupplierService } from 'src/app/core/services/supplier.service';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css'],
 })
-
 export class ProductFormComponent implements OnInit, OnChanges {
   form!: FormGroup;
 
@@ -21,7 +20,12 @@ export class ProductFormComponent implements OnInit, OnChanges {
   categories: ICat[] = [];
   suppliers: ISupplier[] = [];
 
-  constructor(private fb: FormBuilder,private categoryService: CategoryService,private supplierService: SupplierService,private productService: ProductService) {
+  constructor(
+    private fb: FormBuilder,
+    private categoryService: CategoryService,
+    private supplierService: SupplierService,
+    private productService: ProductService
+  ) {
     this.initForm();
   }
 
@@ -39,17 +43,16 @@ export class ProductFormComponent implements OnInit, OnChanges {
     this.form = this.fb.group({
       P_Id: ['', Validators.required],
       P_Name: ['', Validators.required],
-      P_Category: [''],
-      P_Price: [''],
-      P_Supplier: [''],
-      P_Image: [''],
-      P_Desc:['']
+      P_Category: ['', Validators.required],
+      P_Price: ['', [Validators.required, Validators.min(0)]],
+      P_Supplier: ['', Validators.required],
+      P_Image: ['', Validators.required],
+      P_Desc: ['', Validators.required],
     });
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['editProduct'] && changes['editProduct'].currentValue) {
-      console.log('Change detected');
       this.form.patchValue(this.editProduct);
     }
   }
@@ -66,14 +69,13 @@ export class ProductFormComponent implements OnInit, OnChanges {
   }
 
   submit() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
     const formData = this.form.value;
-    console.log(formData);
-    this.refreshGrid();
     this.productService.addData(formData);
     this.form.reset();
-  }
-
-  refreshGrid() {
-    this.categories = [...this.categories];
   }
 }

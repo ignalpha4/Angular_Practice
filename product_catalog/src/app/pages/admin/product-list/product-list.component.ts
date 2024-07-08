@@ -20,6 +20,7 @@ export class ProductListComponent {
     { headerName: 'ID', field: 'P_Id', maxWidth: 90 },
     { headerName: 'Name', field: 'P_Name' },
     { headerName: 'Category', field: 'P_Category' },
+    {headerName:'Description', field: 'P_Desc'},
     { headerName: 'Price', field: 'P_Price' },
     { headerName: 'Supplier', field: 'P_Supplier' },
     {
