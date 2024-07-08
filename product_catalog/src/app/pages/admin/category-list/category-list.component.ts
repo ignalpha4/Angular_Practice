@@ -54,7 +54,7 @@ export class CategoryListComponent implements OnInit {
 
   editCategory(Id: number): void {
 
-    const foundCategory = this.categories.find((cat:any) => cat.C_Id === Id);
+    const foundCategory = this.categories.find((cat:ICat) => cat.C_Id === Id);
 
     if (foundCategory) {
       this.selectedCat = foundCategory;

@@ -1,5 +1,6 @@
 import {Component,Input,OnChanges,SimpleChanges,OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ICat } from 'src/app/core/interfaces/category.interface';
 import { IProduct } from 'src/app/core/interfaces/product.interface';
 import { ISupplier } from 'src/app/core/interfaces/supplier.interface';
 import { CategoryService } from 'src/app/core/services/category.service';
@@ -15,9 +16,9 @@ import { SupplierService } from 'src/app/core/services/supplier.service';
 export class ProductFormComponent implements OnInit, OnChanges {
   form!: FormGroup;
 
-  @Input() editProduct!: any;
+  @Input() editProduct!: IProduct;
 
-  categories: IProduct[] = [];
+  categories: ICat[] = [];
   suppliers: ISupplier[] = [];
 
   constructor(private fb: FormBuilder,private categoryService: CategoryService,private supplierService: SupplierService,private productService: ProductService) {

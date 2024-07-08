@@ -1,4 +1,4 @@
-// view-products.component.ts
+
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -33,7 +33,8 @@ export class ViewProductsComponent {
 
   initForm() {
     this.filterForm = this.fb.group({
-      category: ['', Validators.required]
+      category: ['', Validators.required],
+      filterPrice: ['', Validators.required]
     });
   }
 
@@ -48,6 +49,26 @@ export class ViewProductsComponent {
     }
   }
 
+  onPriceFilterSelect(){
+    const selectedPrice = this.filterForm.get('filterPrice')?.value;
+
+    console.log("inside price filter");
+    
+    if(selectedPrice ===''){
+      this.filteredProducts = this.products;
+      console.log('insied empty');
+    }
+    else if(selectedPrice==='below100'){
+      this.filteredProducts = this.products.filter(product=>product.P_Price<100);
+    }
+    else if(selectedPrice==='between100to500'){
+      this.filteredProducts = this.products.filter(product=>product.P_Price>=100 && product.P_Price<=500);
+    }
+    else if(selectedPrice==='above500'){
+      this.filteredProducts = this.products.filter(product=>product.P_Price>500);
+    }
+  }
+
   updateResults() {
     this.filteredProducts = this.products.filter(product =>
       product.P_Name.toLowerCase().includes(this.searchKey.toLowerCase()) ||
@@ -55,7 +76,7 @@ export class ViewProductsComponent {
     );
   }
 
-  viewProduct(product: any) {
+  viewProduct(product: IProduct) {
     localStorage.setItem('currentItem', JSON.stringify(product));
     this.router.navigate(['pages/user/dashboard/product-details']);
   }

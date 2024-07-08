@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class DashboardComponent {
 
-  username:any
+  username:string
 
   constructor(private authService:AuthService,private router:Router){
     let user = this.authService.getCurrentUser();

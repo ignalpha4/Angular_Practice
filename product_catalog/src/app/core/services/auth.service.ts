@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IUser } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,10 @@ export class AuthService {
     return users ? JSON.parse(users) : []; 
   }
 
-  addUser(newUser:any){
+  addUser(newUser:IUser){
     let users = this.getUsers();
 
-    let user = users.find((user:any)=>user.email === newUser.email);
+    let user = users.find((user:IUser)=>user.email === newUser.email);
 
     if(user){
       return false;
@@ -26,11 +27,11 @@ export class AuthService {
     return true;
   }
 
-  userLogin(loginUser:any){
+  userLogin(loginUser:IUser){
 
     let users = this.getUsers();
 
-    let user =  users.find((user:any)=>user.email === loginUser.email && user.password ===loginUser.password);
+    let user =  users.find((user:IUser)=>user.email === loginUser.email && user.password ===loginUser.password);
 
     if(user){
       return true;
@@ -38,7 +39,7 @@ export class AuthService {
     return false;
   }
 
-  setCurrentUser(loginUser:any){
+  setCurrentUser(loginUser:IUser){
     localStorage.setItem('currentUser',loginUser.email);
   }
 
@@ -48,7 +49,7 @@ export class AuthService {
 
     let currentuser = localStorage.getItem('currentUser');
 
-    let user = users.find((user:any)=>user.email === currentuser);
+    let user = users.find((user:IUser)=>user.email === currentuser);
 
     return user;
   }
