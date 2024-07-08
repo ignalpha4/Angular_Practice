@@ -1,0 +1,33 @@
+<div class="container-fluid" style="min-height: 95vh">
+    <div class="container">
+      <form class="d-flex">
+        <input class="form-control me-2 mt-5" type="search" placeholder="Search" name="search" aria-label="Search" [(ngModel)]="searchKey">
+        <button class="btn btn-success mt-5" type="button" (click)="updateResults()">Search</button>
+      </form>
+      <form class="container" [formGroup]="filterForm">
+        <div class="row">
+          <div class="col-lg-3 mt-2">
+            <label for="category">Category :</label>
+            <select class="form-control mt-2" id="category" formControlName="category" (change)="onFilterSelect()">
+              <option value="">Select Category</option>
+              <option *ngFor="let category of categories" [value]="category.C_Name">{{ category.C_Name }}</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      <div class="row mt-5">
+        <div class="col-md-4 mb-4" *ngFor="let product of filteredProducts; let i = index">
+          <div class="card h-100">
+            <img [src]="product.P_Image" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="Product Image">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.P_Name }}</h5>
+              <strong>Category:</strong> {{ product.P_Category }}<br>
+              <strong>Price:</strong> {{ product.P_Price }}<br>
+              <button class="btn btn-primary" (click)="viewProduct(product)">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
