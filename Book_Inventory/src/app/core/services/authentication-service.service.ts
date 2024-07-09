@@ -48,18 +48,11 @@ export class AuthenticationServiceService {
 
   getCurrentUser():IUser{
     const userEmail =localStorage.getItem('currentUser') || '';
-
     const users= JSON.parse(localStorage.getItem('users') || '[]');
-
     const user = users.find((user:IUser)=>user.email===userEmail);
-    
     return user;
-
   }
 
-  // isAuthenticated():boolean{
-  //   return Boolean(localStorage.getItem('currentUser'));
-  // }
 
   logout(){
     localStorage.removeItem('currentUser');

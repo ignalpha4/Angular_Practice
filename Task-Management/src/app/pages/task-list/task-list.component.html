@@ -8,7 +8,6 @@
         </form>
 
         <form class="container" [formGroup]="filterForm">
-
             <div class="row">
                 <div class="col-lg-3 mt-2">
                     <label for="priority">Priority :</label>
@@ -27,16 +26,14 @@
                         <option value="In progress">In progress</option>
                         <option value="Completed">Completed</option>
                     </select>
-
                 </div>
             </div>
-          
         </form>
         <div class="row mt-5">
             <div class="col-md-4 mb-4" *ngFor="let task of filteredTasks,let i=index">
                 <div class="card h-100 ">
                     <div class="card-body">
-                        <h5 class="card-title">{{ task.title }}</h5>
+                            <h5 class="card-title">{{ task.title }}</h5>
                             <strong>Description :</strong> {{task.desc}}<br>
                             <strong>Due Date:</strong> {{ task.date }}<br>
                             <strong>Priority: </strong> 

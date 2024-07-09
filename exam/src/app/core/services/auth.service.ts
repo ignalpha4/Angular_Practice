@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   constructor() { }
 
   getUsers(){
-    let users =localStorage.getItem('users')
+    let users = localStorage.getItem('users')
     return users ? JSON.parse(users) : []; 
   }
 

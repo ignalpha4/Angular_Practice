@@ -10,10 +10,10 @@ import { TaskService } from 'src/app/core/services/task.service';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
+
 export class TaskListComponent {
 
-
-  filterForm !:FormGroup
+  filterForm !:FormGroup;
   private taskSubscription: Subscription = new Subscription();
 
   searchKey:string =''
@@ -36,24 +36,15 @@ export class TaskListComponent {
   }
 
   ngOnInit() {
-
     this.taskSubscription = this.taskService.taskSubject.subscribe((tasks) => {
       this.tasks = tasks;
       this.filteredTasks = tasks;
     });
-
-    // this.taskService.tasksList.subscribe(tasks=>{
-    //   this.tasks = tasks;
-    //   this.filteredTasks = tasks;
-    // })
-
-    // this.taskService.listItems();
   }
 
   ngOnDestroy() {
     this.taskSubscription.unsubscribe();
   }
-
 
   priority:string = '';
   status:string='';
@@ -86,8 +77,6 @@ export class TaskListComponent {
         task.status.includes(this.status)
       )
     }
-
-
   }
 
   updateResults(){

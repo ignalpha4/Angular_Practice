@@ -9,25 +9,23 @@ import { TaskService } from 'src/app/core/services/task.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private taskService:TaskService){
-      
-    this.taskService.taskSubject.subscribe(tasks=>{
-      this.tasks = tasks;
-    })
-
-    this.getCount();
-  }
-
   pendingCount!:number;
   inProgressCount!:number;
   completedCount!:number;
 
   tasks:ITask[] = [];
 
+  constructor(private taskService:TaskService){
+      
+    this.taskService.taskSubject.subscribe(tasks=>{
+      this.tasks = tasks;
+    })
+      this.getCount();
+  }
+
   ngOnInit(){
 
   }
-
 
   getCount(){
     // this.tasks = this.taskService.getData();

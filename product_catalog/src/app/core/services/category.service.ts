@@ -9,7 +9,6 @@ import { ICat } from '../interfaces/category.interface';
 
     private localStorageKey :string= 'categories';
 
-
     private categoriesSubject = new BehaviorSubject<any[]>(this.getData());
     categories$ = this.categoriesSubject.asObservable();
     

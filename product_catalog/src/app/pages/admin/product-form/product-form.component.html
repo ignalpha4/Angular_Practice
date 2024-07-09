@@ -6,14 +6,14 @@
         <label for="P_Id">Product ID:</label>
         <input type="number" id="P_Id" formControlName="P_Id" class="form-control" />
         <div *ngIf="form.get('P_Id')?.invalid && form.get('P_Id')?.touched">
-          <p style="color: red;">This field is required !!!</p>
+          <p style="color: red;">This field is required </p>
         </div>
       </div>
       <div class="col-lg-4">
         <label for="P_Name">Product Name</label>
         <input type="text" id="P_Name" formControlName="P_Name" class="form-control" />
         <div *ngIf="form.get('P_Name')?.invalid && form.get('P_Name')?.touched">
-          <p style="color: red;">This field is required !!!</p>
+          <p style="color: red;">This field is required </p>
         </div>
       </div>
       <div class="col-lg-4">
@@ -22,7 +22,7 @@
           <option *ngFor="let category of categories" [value]="category.C_Name">{{ category.C_Name }}</option>
         </select>
         <div *ngIf="form.get('P_Category')?.invalid && form.get('P_Category')?.touched">
-          <p style="color: red;">This field is required !!!</p>
+          <p style="color: red;">This field is required </p>
         </div>
       </div>
     </div>
@@ -43,14 +43,14 @@
           <option *ngFor="let supplier of suppliers" [value]="supplier.S_Name">{{ supplier.S_Name }}</option>
         </select>
         <div *ngIf="form.get('P_Supplier')?.invalid && form.get('P_Supplier')?.touched">
-          <p style="color: red;">This field is required !!!</p>
+          <p style="color: red;">This field is required </p>
         </div>
       </div>
       <div class="col-lg-4">
         <label for="P_Image">Product Image</label>
         <input type="file" id="P_Image" (change)="onImageChange($event)" class="form-control" />
         <div *ngIf="form.get('P_Image')?.invalid && form.get('P_Image')?.touched">
-          <p style="color: red;">This field is required !!!</p>
+          <p style="color: red;">This field is required </p>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
         <label for="P_Desc">Product Description</label>
         <textarea id="P_Desc" class="form-control" formControlName="P_Desc"></textarea>
         <div *ngIf="form.get('P_Desc')?.invalid && form.get('P_Desc')?.touched">
-          <p style="color: red;">This field is required !!!</p>
+          <p style="color: red;">This field is required </p>
         </div>
       </div>
     </div>
@@ -69,5 +69,4 @@
       <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
     </div>
   </form>
-  <br />
 </div>

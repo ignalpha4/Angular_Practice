@@ -40,4 +40,5 @@ export class SupplierService {
     localStorage.setItem(this.localStorageKey,JSON.stringify(updatedSuppliers));
     this.suppliersSubject.next(updatedSuppliers);
   }
+  
 }

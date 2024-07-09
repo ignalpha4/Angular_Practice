@@ -19,14 +19,13 @@
         <input id="username" class="form-control" type="text" formControlName="userName">
 
         <div *ngIf="form.get('userName')?.invalid && form.get('userName')?.touched">
-                <p style="color: red;"> User Id is required</p>
+                <p style="color: red;"> User name is required</p>
         </div>
 
       </div>
       <div class="col-lg-4">
         <label for="email">Email:</label>
         <input id="email" class="form-control" type="text" formControlName="email">
-
 
         <div *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched">
           <p style="color: red;"> Enter Proper Email Address</p>
